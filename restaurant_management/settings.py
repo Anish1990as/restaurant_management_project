@@ -75,6 +75,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'restaurant_management.wsgi.application'
 
+# Restaurant Name
+
+RESTAURANT_NAME = "My Awesome Restaurant"
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
