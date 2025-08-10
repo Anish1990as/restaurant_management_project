@@ -4,42 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Homepage</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            margin: 5px 0;
+            font-size: 1.2rem;
+        }
+        section {
+            padding: 40px;
+            text-align: center;
+        }
+        section h2 {
+            color: #222;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        section p {
+            max-width: 600px;
+            margin: auto;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        a.button {
+            display: inline-block;
+            margin-top: 25px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        a.button:hover {
+            background-color: #388E3C;
+        }
+        .services {
+            background-color: #e8f5e9;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .service-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .service-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            width: 250px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        .service-card h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+    </style>
 </head>
-<body style="margin:0; font-family: Arial, sans-serif; background-color:#f4f4f9; color:#333;">
+<body>
 
     <!-- Header -->
-    <header style="background-color:#4CAF50; color:white; text-align:center; padding:20px 0;">
-        <h1 style="margin:0; font-size:2.5rem;">Welcome to My Homepage</h1>
-        <p style="margin:5px 0; font-size:1.2rem;">Your one-stop solution for bookings</p>
+    <header>
+        <h1>Welcome to My Homepage</h1>
+        <p>Your solution for bookings</p>
     </header>
 
     <!-- Main Content -->
-    <section style="padding:40px; text-align:center;">
-        <h2 style="color:#222; font-size:1.8rem; margin-bottom:15px;">About Us</h2>
-        <p style="max-width:600px; margin:auto; font-size:1.05rem; line-height:1.6; color:#555;">
+    <section>
+        <h2>About Us</h2>
+        <p>
             We offer restaurant reservations — all in one place.
             Fast, secure, and easy to use.
         </p>
-
-        <a href="#services" style="display:inline-block; margin-top:25px; background-color:#4CAF50; color:white; padding:12px 25px; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1rem;">
-            Explore Services
-        </a>
+        <a href="#services" class="button">Explore Services</a>
     </section>
 
     <!-- Services -->
-    <section id="services" style="padding:40px; background-color:gray; padding:20px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-        <h2 style="text-align:center; font-size:1.8rem; margin-bottom:30px; color:#222;">Our Services</h2>
-        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
-             
-            <div style="background-color:#f9f9f9; padding:20px; border-radius:8px; width:250px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-                <h3 style="margin-top:0; color:#4CAF50;">restaurant] Booking</h3>
-                <p style="color:#555;">Find and book the best hotels instantly.</p>
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service-list">
+            <div class="service-card">
+                <h3>Restaurant Booking</h3>
+                <p>Find and book the best Ewstauranta instantly.</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer style="background-color:#333; color:white; text-align:center; padding:15px; margin-top:40px;">
+    <footer>
         &copy; 2025 My Website. All rights reserved.
     </footer>
 
