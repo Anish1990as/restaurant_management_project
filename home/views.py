@@ -5,10 +5,6 @@ from django.conf import settings
 from .models import Restaurant
 
 def home(request):
-
-    if Restaurant.objects.exists():
-     restaurent_name = Restaurant.objects.first().name 
-    else:
-        restaurant_name = getattr(settings, 'RESTAURANT_NAME', 'Restaurant Name')
+    restaurant_name = getattr(settings, 'RESTAURANT_NAME', 'Default Restaurant')
 
     return render(request, 'home.html',{'restaurent_name': restaurent_name})
