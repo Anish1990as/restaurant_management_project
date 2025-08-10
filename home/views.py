@@ -12,3 +12,5 @@ def home(request):
         restaurant_name = getattr(settings, 'RESTAURANT_NAME', 'Default Restaurant')
 
     return render(request, 'home.html',{'restaurant_name': restaurant_name})
+    return render(request, 'about.html')
+    
