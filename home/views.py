@@ -7,4 +7,4 @@ from .models import Restaurant
 def home(request):
     restaurant_name = getattr(settings, 'RESTAURANT_NAME', 'Default Restaurant')
 
-    return render(request, 'home.html',{'restaurent_name': restaurent_name})
+    return render(request, 'home.html',{'restaurant_name': restaurant_name})
