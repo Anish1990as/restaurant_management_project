@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'restaurant_management.wsgi.application'
 
 # Restaurant Name
 
-RESTAURANT_NAME = "My Awesome Restaurant"
+RESTAURANT_NAME = "Tasty Byte"
 
 
 # Database
