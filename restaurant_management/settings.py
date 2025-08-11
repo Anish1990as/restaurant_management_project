@@ -79,6 +79,8 @@ WSGI_APPLICATION = 'restaurant_management.wsgi.application'
 
 RESTAURANT_NAME = "Tasty Byte"
 
+RESTAURANT_PHONE = "+91 7880821765"
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
