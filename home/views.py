@@ -14,3 +14,8 @@ def home(request):
     return render(request, 'home.html',{'restaurant_name': restaurant_name})
     return render(request, 'about.html')
     
+
+    def homepage(request):
+    return render(request, "home/index.html", {
+        "phone_number": settings.RESTAURANT_PHONE
+    })
