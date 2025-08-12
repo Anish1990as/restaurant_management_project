@@ -25,3 +25,6 @@ def menu_items(request):
         {"name": "French Fries", "price": 2.99},
     ]
     return render(request, "home/menu.html", {"menu": menu})
+
+def contact(request):
+    return render(request, 'home/contact.html')    
