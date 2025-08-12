@@ -1,24 +1,26 @@
- from django.shortcuts import render
+from django.shortcuts import render
 from django.conf import settings
 from .models import Restaurant
 
 def home(request):
+    """Homepage View"""
     # Restaurant ka naam get karo
     if Restaurant.objects.exists():
         restaurant_name = Restaurant.objects.first().name
     else:
         restaurant_name = getattr(settings, 'RESTAURANT_NAME', 'Default Restaurant')
 
-    return render(request, 'home.html', {
-        'restaurant_name': restaurant_name
-    })
+    phone_number = getattr(settings, 'RESTAURANT_PHONE', 'Not Available')
 
+    return render(request, 'home/home.html', {
+        'restaurant_name': restaurant_name,
+        'phone_number': phone_number
+    })
 
 def about(request):
-    return render(request, 'about.html')
+    """About Us Page"""
+    return render(request, 'home/aboutus.html')
 
-
-def homepage(request):
-    return render(request, "home/index.html", {
-        "phone_number": getattr(settings, 'RESTAURANT_PHONE', 'Not Available')
-    })
+def custom_404(request, exception):
+    """Custom 404 Page"""
+    return render(request, 'home/404.html', status=404)
