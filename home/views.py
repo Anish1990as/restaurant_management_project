@@ -18,9 +18,9 @@ def home(request):
     })
 
 def about(request):
-    """About Us Page"""
+     
     return render(request, 'home/aboutus.html')
 
 def custom_404(request, exception):
-    """Custom 404 Page"""
+    
     return render(request, 'home/404.html', status=404)
