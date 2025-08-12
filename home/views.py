@@ -9,6 +9,7 @@ def home(request):
     return render(request, 'home.html', {
         'restaurant_name': restaurant_name,
         'phone_number': phone_number
+    })
     
 
 def about(request):
