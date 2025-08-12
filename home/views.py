@@ -1,21 +1,24 @@
-from django.shortcuts import render
-
-# Create your views here.
+ from django.shortcuts import render
 from django.conf import settings
 from .models import Restaurant
 
 def home(request):
-
+    # Restaurant ka naam get karo
     if Restaurant.objects.exists():
-        restaurant_name = Restaurant.objects.first().name 
+        restaurant_name = Restaurant.objects.first().name
     else:
         restaurant_name = getattr(settings, 'RESTAURANT_NAME', 'Default Restaurant')
 
-    return render(request, 'home.html',{'restaurant_name': restaurant_name})
-    return render(request, 'about.html')
-    
+    return render(request, 'home.html', {
+        'restaurant_name': restaurant_name
+    })
 
-    def homepage(request):
+
+def about(request):
+    return render(request, 'about.html')
+
+
+def homepage(request):
     return render(request, "home/index.html", {
-        "phone_number": settings.RESTAURANT_PHONE
+        "phone_number": getattr(settings, 'RESTAURANT_PHONE', 'Not Available')
     })
