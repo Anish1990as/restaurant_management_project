@@ -2,7 +2,6 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from django.db import DatabaseError
 
 from .models import Item
 from .serializers import ItemSerializer
@@ -23,7 +22,7 @@ class ItemView(APIView):
         except DatabaseError:
             return Response(
                 {"error": "Database error occurred"},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                status=status.HTTP_404_NOT_FOUND
             )
         except Exception as e:
             return Response(
@@ -42,7 +41,7 @@ class ItemView(APIView):
         except DatabaseError:
             return Response(
                 {"error": "Database error occurred"},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                status=status.HTTP_400_BAD_REQUEST
             )
         except Exception as e:
             return Response(
