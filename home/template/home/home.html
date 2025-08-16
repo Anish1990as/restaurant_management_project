@@ -244,7 +244,7 @@ hr { border:0; border-top:1px solid #777; margin:15px 0; }
     <h1>Welcome to Tasty Byte</h1>
     <img src="{% static 'images/testy.jpg' %}" alt="Restaurant Logo" class="hero-logo">
     <p>Enjoy the best food in town!</p>
-    <a href="#menu" class="explore-menu-button">View Menu</a>
+    <a href="{% url 'menu' %}"  class="explore-menu-button">View Menu</a>
 </section>
 
 <!-- About Us -->
@@ -252,7 +252,7 @@ hr { border:0; border-top:1px solid #777; margin:15px 0; }
     <div class="about-text">
         <h2>About <span class="highlight">Tasty Byte</span></h2>
         <p>At <span class="highlight">Tasty Byte</span>, dining is more than just a meal—it's an <span class="highlight">experience</span>. Our chefs create dishes with love, using only <span class="highlight">fresh</span> and locally sourced ingredients. From cozy dinners to grand celebrations, every moment here is <span class="highlight">crafted to perfection</span>.</p>
-        <a href="#menu" class="btn-about">Explore Our Menu</a>
+        <a href="{% url 'menu' %}" class="btn-about">Explore Our Menu</a>
     </div>
     <div class="about-image">
         <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de" alt="Tasty Byte Food">
