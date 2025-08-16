@@ -1,4 +1,4 @@
-{% load static %}
+ {% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tasty Byte - Home</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
- 
+<style> 
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -19,48 +19,47 @@ body {
 a { text-decoration: none; }
 
  
-.hero {
-    position: relative;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe') center/cover no-repeat;
+    .hero-section {
+    background: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe') center/cover no-repeat;
     color: white;
     text-align: center;
-    padding: 8rem 1rem;
+    padding: 6rem 1rem;
     background-attachment: fixed;
+    position: relative;
 }
-.hero h1 {
-    font-size: 3.2rem;
+.hero-section h1 {
+    font-size: 3rem;
     margin: 0;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
-.hero p {
+.hero-section p {
     font-size: 1.3rem;
-    margin-top: 1rem;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+    margin-top: 0.5rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
 }
-.hero a {
-    display: inline-block;
-    margin-top: 2rem;
-    padding: 0.9rem 2rem;
-    border-radius: 30px;
-    font-weight: bold;
-    background: linear-gradient(45deg, #ff4e50, #f9d423);
-    color: white;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.hero a:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-.hero .logo {
+.hero-logo {
     position: absolute;
     top: 20px;
     right: 20px;
-    width: 130px;
+    width: 120px;
     height: auto;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
-
+.explore-menu-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    background: #ff4e50;
+    color: white;
+    padding: 0.8rem 1.8rem;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+.explore-menu-button:hover {
+    background: #e84142;
+    transform: scale(1.05);
+}
 .about-section {
     display: flex;
     flex-wrap: wrap;
@@ -121,8 +120,8 @@ a { text-decoration: none; }
     transform: translateY(-10px) rotate(-1deg);
     box-shadow: 0 16px 40px rgba(0,0,0,0.25);
 }
- 
 
+ 
 @keyframes fadeInLeft {
     0% { opacity: 0; transform: translateX(-50px); }
     100% { opacity: 1; transform: translateX(0); }
@@ -137,7 +136,7 @@ a { text-decoration: none; }
     .about-section { flex-direction: column-reverse; padding: 4rem 1rem; }
     .about-image { width: 90%; margin-bottom: 2rem; }
 }
-
+ 
 .menu-section {
     background-color: #fff4e6;
     padding: 3rem 1rem;
@@ -241,11 +240,11 @@ hr { border:0; border-top:1px solid #777; margin:15px 0; }
 <body>
 
 <!-- Hero Section -->
-<section class="hero">
+<section class="hero-section">
     <h1>Welcome to Tasty Byte</h1>
-    <img src="{% static 'images/testy.jpg' %}" alt="Restaurant Logo" class="logo">
+    <img src="{% static 'images/testy.jpg' %}" alt="Restaurant Logo" class="hero-logo">
     <p>Enjoy the best food in town!</p>
-    <a href="#menu" class="menu-btn">View Menu</a>
+    <a href="#menu" class="explore-menu-button">View Menu</a>
 </section>
 
 <!-- About Us -->
