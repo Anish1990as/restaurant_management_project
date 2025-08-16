@@ -10,7 +10,6 @@ from .serializers import ItemSerializer
 NOTE: Conside this as a reference and follow this same coding structure or format to work on you tasks
 '''
 
-# Create your views here.
 class ItemView(APIView):
 
     def get(self, request):
