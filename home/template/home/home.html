@@ -1,4 +1,7 @@
- <!DOCTYPE html>
+{% load static %}
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,7 +20,7 @@
         .hero {
             background: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe') center/cover no-repeat;
             color: white;
-            text-align: center;
+            text-align: center; 
             padding: 6rem 1rem;
             background-attachment: fixed;
         }
@@ -150,22 +153,42 @@
             font-size: 1.3rem;
             text-decoration: none;
         }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 120px;    
+            height: auto;
+        }
+        
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+
     </style>
 </head>
 <body>
 
     <!-- Hero Section -->
-    <section class="hero">
+<section class="hero">
+    <div class="header">
         <h1>Welcome to Tasty Byte</h1>
-        <p>Where Every Bite is a Delight</p>
-        <a href="#menu">View Menu</a>
-    </section>
+        <img src="{% static 'images/testy.jpg' %}" alt="Restaurant Logo" class="logo">
+    </div>
+
+    <p style="text-align:center;">Enjoy the best food in town!</p>
+    <a href="#menu" class="menu-btn">View Menu</a>
+</section>
 
     <!-- About Us -->
     <section class="about-section">
         <div class="about-text">
             <h2>About Us</h2>
-            <p>At Tasty Byte, dining is more than just a meal—it’s an experience. Our chefs create dishes with love, using only fresh and locally sourced ingredients. From cozy dinners to grand celebrations, every moment here is crafted to perfection.</p>
+            <p>At Tasty Byte, dining is more than just a meal—its an experience. Our chefs create dishes with love, using only fresh and locally sourced ingredients. From cozy dinners to grand celebrations, every moment here is crafted to perfection.</p>
         </div>
         <div class="about-image">
             <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de" alt="Tasty Byte Food">
@@ -187,7 +210,7 @@
                 <p>Rich and creamy sauce with tender chicken and herbs.</p>
             </div>
             <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1603133872878-684f0ce0e3e0" alt="Pizza">
+                <img src="https://img.freepik.com/premium-photo/traditional-chicken-alfredo-pasta-dish-featuring-tender-grilled-chicken-creamy-alfredo-sauce_1044970-640.jpg" alt="Pizza">
                 <h3>Margherita Pizza</h3>
                 <p>Fresh mozzarella, basil, and tangy tomato sauce.</p>
             </div>
@@ -198,7 +221,7 @@
     <section class="visit-section">
         <h3>Visit Us</h3>
         <p>123 Food Street, Culinary City</p>
-        <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">📍 View on Google Maps</a>
+        <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">?? View on Google Maps</a>
     </section>
 
     <!-- Footer -->
@@ -210,9 +233,9 @@
 
         <!-- Contact Information (Left Corner) -->
         <address style="font-style:normal; line-height:1.6; margin:0;">
-            📞 7880821765 <br>
-            📧 <a href="mailto:info@myrestaurant.com" style="color:white; text-decoration:none;">info@myrestaurant.com</a><br>
-            📍 <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank" style="color:white; text-decoration:none;">123 Robertsganj sonbhadra India</a>
+            ?? 7880821765 <br>
+            ?? <a href="mailto:info@myrestaurant.com" style="color:white; text-decoration:none;">info@myrestaurant.com</a><br>
+            ?? <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank" style="color:white; text-decoration:none;">123 Robertsganj sonbhadra India</a>
         </address>
 
         <!-- Social Media Icons (Right Corner) -->
