@@ -10,26 +10,30 @@
   <style>
     /* ===== Top Bar ===== */
     .top-bar {
+      background: #222;
+      color: white;
+      padding: 10px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(90deg, #222, #444);
-      padding: 12px 40px;
       font-family: 'Segoe UI', sans-serif;
     }
-    .logo {
-      font-size: 1.6rem;
-      font-weight: bold;
-      color: #ff4e50;
-      letter-spacing: 1px;
-    }
-    .center-nav a {
-      color: white;
-      margin: 0 18px;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-    }
+
+  /* Center Nav ke liye Green Box */
+  .top-bar .center-nav a {
+    margin: 0 10px;
+    padding: 6px 15px;
+    text-decoration: none;
+    color: white;
+    background: green;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background 0.3s ease;
+  }
+
+  .top-bar .center-nav a:hover {
+    background: #32cd32; /* hover pe light green */
+  }
     .center-nav a:hover {
       color: #ff4e50;
     }
@@ -278,92 +282,92 @@
       .menu-items { gap: 1rem; }
     }
   </style>
-</head>
+</head> 
 
+<body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="logo">TastyByte</div>
+    
+    <!-- Center Navigation -->
+    <div class="center-nav">
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'menu' %}">Menu</a>
+      <a href="{% url 'contact' %}">Contact</a>
+    </div>
 
-<div class="top-bar">
-  <div class="logo">TastyByte</div>
-  
-  <div class="center-nav">
-    <a href="{% url 'about' %}" class="explore-menu-button">About</a>
-    <a href="{% url 'menu' %}" class="explore-menu-button">Menu</a>
-    <a href="{% url 'contact' %}" class="explore-menu-button">Contact</a>
+    <!-- Right Side Auth Links -->
+    <div class="auth-links">
+      <a href="#login">Login</a>
+      <a href="#signup" class="signup-btn">Signup</a>
+    </div>
   </div>
 
-  <div class="auth-links">
-    <a href="#login" class="signup-btn">Login</a>
-    <a href="#signup" class="signup-btn">Signup</a>
-  </div>
-</div>
+  <!-- Hero Section -->
+  <section class="hero-section">
+      <h1>Welcome to Tasty Byte</h1>
+      <img src="{% static 'images/testy.jpg' %}" alt="Restaurant Logo" class="hero-logo">
+      <p>Enjoy the best food in town!</p>
+      <a href="{% url 'menu' %}" class="explore-menu-button">View Menu</a>
+  </section>
 
+  <!-- About Us -->
+  <section class="about-section">
+      <div class="about-text">
+          <h2>About <span class="highlight">Tasty Byte</span></h2>
+          <p>At <span class="highlight">Tasty Byte</span>, dining is more than just a meal—it's an <span class="highlight">experience</span>. Our chefs create dishes with love, using only <span class="highlight">fresh</span> and locally sourced ingredients. From cozy dinners to grand celebrations, every moment here is <span class="highlight">crafted to perfection</span>.</p>
+          <a href="{% url 'menu' %}" class="btn-about">Explore Our Menu</a>
+      </div>
+      <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de" alt="Tasty Byte Food">
+      </div>
+  </section>
 
-<!-- Hero Section -->
-<section class="hero-section">
-    <h1>Welcome to Tasty Byte</h1>
-    <img src="{% static 'images/testy.jpg' %}" alt="Restaurant Logo" class="hero-logo">
-    <p>Enjoy the best food in town!</p>
-    <a href="{% url 'menu' %}" class="explore-menu-button">View Menu</a>
-</section>
+  <!-- Menu Highlights -->
+  <section class="menu-section" id="menu">
+      <h2>Our Favorites</h2>
+      <div class="menu-items">
+          <div class="menu-card">
+              <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc" alt="Burger">
+              <h3>Classic Cheese Burger</h3>
+              <p>Juicy beef patty with melted cheese, fresh lettuce & tomatoes.</p>
+          </div>
+          <div class="menu-card">
+              <img src="https://images.unsplash.com/photo-1604908177225-c3a43b2d3c8d" alt="Pasta">
+              <h3>Creamy Alfredo Pasta</h3>
+              <p>Rich and creamy sauce with tender chicken and herbs.</p>
+          </div>
+          <div class="menu-card">
+              <img src="https://img.freepik.com/premium-photo/traditional-chicken-alfredo-pasta-dish-featuring-tender-grilled-chicken-creamy-alfredo-sauce_1044970-640.jpg" alt="Pizza">
+              <h3>Margherita Pizza</h3>
+              <p>Fresh mozzarella, basil, and tangy tomato sauce.</p>
+          </div>
+      </div>
+  </section>
 
-<!-- About Us -->
-<section class="about-section">
-    <div class="about-text">
-        <h2>About <span class="highlight">Tasty Byte</span></h2>
-        <p>At <span class="highlight">Tasty Byte</span>, dining is more than just a meal—it's an <span class="highlight">experience</span>. Our chefs create dishes with love, using only <span class="highlight">fresh</span> and locally sourced ingredients. From cozy dinners to grand celebrations, every moment here is <span class="highlight">crafted to perfection</span>.</p>
-        <a href="{% url 'menu' %}" class="btn-about">Explore Our Menu</a>
-    </div>
-    <div class="about-image">
-        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de" alt="Tasty Byte Food">
-    </div>
-</section>
+  <!-- Visit Us -->
+  <section class="visit-section">
+      <h3>Visit Us</h3>
+      <p>123 Robertsganj ,Sonbhadra City</p>
+      <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">📍 View on Google Maps</a>
+  </section>
 
-
-<!-- Menu Highlights -->
-<section class="menu-section" id="menu">
-    <h2>Our Favorites</h2>
-    <div class="menu-items">
-        <div class="menu-card">
-            <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc" alt="Burger">
-            <h3>Classic Cheese Burger</h3>
-            <p>Juicy beef patty with melted cheese, fresh lettuce & tomatoes.</p>
-        </div>
-        <div class="menu-card">
-            <img src="https://images.unsplash.com/photo-1604908177225-c3a43b2d3c8d" alt="Pasta">
-            <h3>Creamy Alfredo Pasta</h3>
-            <p>Rich and creamy sauce with tender chicken and herbs.</p>
-        </div>
-        <div class="menu-card">
-            <img src="https://img.freepik.com/premium-photo/traditional-chicken-alfredo-pasta-dish-featuring-tender-grilled-chicken-creamy-alfredo-sauce_1044970-640.jpg" alt="Pizza">
-            <h3>Margherita Pizza</h3>
-            <p>Fresh mozzarella, basil, and tangy tomato sauce.</p>
-        </div>
-    </div>
-</section>
-
-<!-- Visit Us -->
-<section class="visit-section">
-    <h3>Visit Us</h3>
-    <p>123 Robertsganj ,Sonbhadra City</p>
-    <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">📍 View on Google Maps</a>
-</section>
-
-<!-- Footer -->
-<footer>
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-        <address style="font-style:normal; line-height:1.6; margin:0;">
-            📞 7880821765 <br>
-            📧 <a href="mailto:info@myrestaurant.com">info@myrestaurant.com</a><br>
-            📍 <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">123 Robertsganj, Sonbhadra, India</a>
-        </address>
-        <div class="social" style="display:flex; gap:10px;">
-            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-        </div>
-    </div>
-    <hr>
-    <p>&copy; 2025 Tasty Byte. All rights reserved.</p>
-</footer>
-
+  <!-- Footer -->
+  <footer>
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <address style="font-style:normal; line-height:1.6; margin:0;">
+              📞 7880821765 <br>
+              📧 <a href="mailto:info@myrestaurant.com">info@myrestaurant.com</a><br>
+              📍 <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">123 Robertsganj, Sonbhadra, India</a>
+          </address>
+          <div class="social" style="display:flex; gap:10px;">
+              <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          </div>
+      </div>
+      <hr>
+      <p>&copy; 2025 Tasty Byte. All rights reserved.</p>
+  </footer>
 </body>
 </html>
