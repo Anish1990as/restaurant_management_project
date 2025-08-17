@@ -66,12 +66,27 @@
             background-color: #8b1a1a;
         }
 
-        
         footer {
-            color: #555;
-            font-size: 0.9rem;
+        background: linear-gradient(90deg, #333, #555);
+        color: white;
+        padding: 2rem;
+        text-align: center;
         }
-    </style>
+        footer .social a {
+        color: white;
+        margin: 0 10px;
+        font-size: 1.4rem;
+        transition: all 0.3s ease;
+        }
+        footer .social a:hover { 
+        color: #ff4e50;
+        transform: scale(1.2);
+        }
+        footer address a { color:white; text-decoration:none; }
+        footer address a:hover { text-decoration:underline; }
+        hr { border:0; border-top:1px solid #777; margin:15px 0; }
+        
+        </style>
 </head>
 <body>
 
@@ -99,9 +114,22 @@
     </div>
 </div>
 
-<!-- ===== FOOTER ===== -->
-<footer class="text-center py-4">
-    <p>&copy; {{ restaurant_name|default:"Tasty Byte" }} - All Rights Reserved</p>
+ <!-- Footer -->
+<footer>
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <address style="font-style:normal; line-height:1.6; margin:0;">
+            📞 7880821765 <br>
+            📧 <a href="mailto:info@myrestaurant.com">info@myrestaurant.com</a><br>
+            📍 <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">123 Robertsganj, Sonbhadra, India</a>
+        </address>
+        <div class="social" style="display:flex; gap:10px;">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+    <hr>
+    <p>&copy; 2025 Tasty Byte. All rights reserved.</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
