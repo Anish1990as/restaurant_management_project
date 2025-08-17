@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* ===== Top Bar ===== */
+    
     .top-bar {
       background: #222;
       color: white;
@@ -19,7 +19,7 @@
       font-family: 'Segoe UI', sans-serif;
     }
 
-  /* Center Nav ke liye Green Box */
+ 
   .top-bar .center-nav a {
     margin: 0 10px;
     padding: 6px 15px;
@@ -32,7 +32,7 @@
   }
 
   .top-bar .center-nav a:hover {
-    background: #32cd32; /* hover pe light green */
+    background: #32cd32;  
   }
     .center-nav a:hover {
       color: #ff4e50;
@@ -58,7 +58,7 @@
       color: white;
     }
 
-    /* ===== General Styling ===== */
+    
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
@@ -68,7 +68,7 @@
     }
     a { text-decoration: none; }
 
-    /* ===== Hero Section ===== */
+    
     .hero-section {
       background: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe') center/cover no-repeat;
       color: white;
@@ -111,7 +111,7 @@
       transform: scale(1.05);
     }
 
-    /* ===== About Section ===== */
+     
     .about-section {
       display: flex;
       flex-wrap: wrap;
@@ -171,7 +171,7 @@
       box-shadow: 0 16px 40px rgba(0,0,0,0.25);
     }
 
-    /* ===== Animations ===== */
+    
     @keyframes fadeInLeft {
       0% { opacity: 0; transform: translateX(-50px); }
       100% { opacity: 1; transform: translateX(0); }
@@ -181,7 +181,7 @@
       100% { opacity: 1; transform: translateX(0); }
     }
 
-    /* ===== Menu Section ===== */
+    
     .menu-section {
       background-color: #fff4e6;
       padding: 3rem 1rem;
@@ -221,7 +221,7 @@
     .menu-card h3 { margin-top: 0.8rem; color: #ff4e50; }
     .menu-card p { font-size: 0.95rem; color: #555; }
 
-    /* ===== Visit Section ===== */
+     
     .visit-section {
       background: repeating-linear-gradient(
         45deg,
@@ -254,7 +254,7 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
 
-    /* ===== Footer ===== */
+   
     footer {
       background: linear-gradient(90deg, #333, #555);
       color: white;
@@ -275,7 +275,7 @@
     footer address a:hover { text-decoration:underline; }
     hr { border:0; border-top:1px solid #777; margin:15px 0; }
 
-    /* ===== Responsive ===== */
+    
     @media (max-width: 768px) {
       .about-section { flex-direction: column-reverse; padding: 4rem 1rem; }
       .about-image { width: 90%; margin-bottom: 2rem; }
@@ -289,14 +289,14 @@
   <div class="top-bar">
     <div class="logo">TastyByte</div>
     
-    <!-- Center Navigation -->
+    
     <div class="center-nav">
       <a href="{% url 'about' %}">About</a>
       <a href="{% url 'menu' %}">Menu</a>
       <a href="{% url 'contact' %}">Contact</a>
     </div>
 
-    <!-- Right Side Auth Links -->
+     
     <div class="auth-links">
       <a href="#login">Login</a>
       <a href="#signup" class="signup-btn">Signup</a>
