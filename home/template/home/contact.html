@@ -1,56 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            padding: 40px;
-            color: #333;
-        }
-        .contact-container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        p {
-            margin: 10px 0;
-            line-height: 1.5;
-        }
-        .contact-info {
-            margin-top: 20px;
-        }
-        .contact-info strong {
-            display: block;
-            margin-top: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6e8efb, #a777e3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .contact-container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 650px;
+      width: 100%;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      color: #fff;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 32px;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, #ffdf6c, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      margin: 10px 0;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .contact-info {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .contact-info strong {
+      display: block;
+      margin-top: 15px;
+      font-size: 16px;
+      color: #ffdf6c;
+      transition: 0.3s;
+    }
+
+    .contact-info p a {
+      text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .contact-info p a:hover {
+      color: #ffdf6c;
+    }
+
+    .social-links {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-links a {
+      text-decoration: none;
+      font-size: 20px;
+      color: white;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 12px;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      background: #ffdf6c;
+      color: #333;
+      transform: scale(1.15) rotate(8deg);
+    }
+
+    iframe {
+      margin-top: 25px;
+      border-radius: 15px;
+      width: 100%;
+      height: 250px;
+      border: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== Footer with Gradient & Hover Glow ===== */
+    footer {
+      background: linear-gradient(90deg, #333, #555);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 40px;
+      width: 100%;
+    }
+    footer .social a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.4rem;
+      transition: all 0.3s ease;
+    }
+    footer .social a:hover { 
+      color: #ff4e50;
+      transform: scale(1.2);
+    }
+    footer address a { color:white; text-decoration:none; }
+    footer address a:hover { text-decoration:underline; }
+    hr { border:0; border-top:1px solid #777; margin:15px 0; }
+  </style>
 </head>
 <body>
-    <div class="contact-container">
-        <h2>Contact Us</h2>
-        <p>We’d love to hear from you! Feel free to reach out to us using the details below:</p>
-        
-        <div class="contact-info">
-            <strong>Email:</strong>
-            <p>support@example.com</p>
-            
-            <strong>Phone:</strong>
-            <p>+91 7880821765</p>
-            
-            <strong>Address:</strong>
-            <p>123, Main Street, sonbhadra, Uttar Pradesh, India</p>
-        </div>
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <p>We’d love to hear from you! Feel free to reach out to us:</p>
+    
+    <div class="contact-info">
+      <strong><i class="fas fa-envelope"></i> Email:</strong>
+      <p><a href="mailto:support@testybyte.com">support@testybyte.com</a></p>
+      
+      <strong><i class="fas fa-phone"></i> Phone:</strong>
+      <p><a href="tel:+917880821765">+91 7880821765</a></p>
+      
+      <strong><i class="fas fa-map-marker-alt"></i> Address:</strong>
+      <p>123, Main Street, Sonbhadra, Uttar Pradesh, India</p>
     </div>
+
+    <div class="social-links">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+
+    <!-- Google Maps Embed -->
+<iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3641.7535466843143!2d82.78315321539894!3d24.6866558841271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398f2d9b6e1c5c71%3A0x3b4f6e6b6a2b6d55!2sSonbhadra%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1693665847721!5m2!1sen!2sin" 
+  width="100%" 
+  height="250" 
+  style="border:0; border-radius:15px;" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <hr>
+    <address>
+      © 2025 Tasty Byte | <a href="mailto:support@testybyte.com">support@testybyte.com</a>
+    </address>
+  </footer>
 </body>
 </html>
+
