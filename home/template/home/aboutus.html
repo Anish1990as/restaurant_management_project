@@ -90,12 +90,27 @@
         }
 
         footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
+        background: linear-gradient(90deg, #333, #555);
+        color: white;
+        padding: 2rem;
+        text-align: center;
         }
+        footer .social a {
+        color: white;
+        margin: 0 10px;
+        font-size: 1.4rem;
+        transition: all 0.3s ease;
+        
+        }
+        footer .social a:hover { 
+        color: #ff4e50;
+        transform: scale(1.2);
+        }
+        footer address a { color:white; text-decoration:none; }
+        footer address a:hover { text-decoration:underline; }
+        hr { border:0; border-top:1px solid #777; margin:15px 0; }
+
+
     </style>
 </head>
 <body>
@@ -121,8 +136,23 @@
         <a href="https://maps.app.goo.gl/q3D6oBGqsENQf4LA7" target="_blank">📍 View on Google Maps</a>
     </section>
 
-    <footer>
-        &copy; 2025 Flavor Haven. All Rights Reserved.
-    </footer>
+     <!-- Footer -->
+<footer>
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <address style="font-style:normal; line-height:1.6; margin:0;">
+            📞 7880821765 <br>
+            📧 <a href="mailto:info@myrestaurant.com">info@myrestaurant.com</a><br>
+            📍 <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">123 Robertsganj, Sonbhadra, India</a>
+        </address>
+        <div class="social" style="display:flex; gap:10px;">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+    <hr>
+    <p>&copy; 2025 Tasty Byte. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
