@@ -1,0 +1,187 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasty Byte - Reservations</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* === Common Styles (same as home.html) === */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fefaf6;
+      color: #333;
+    }
+    a { text-decoration: none; }
+
+    /* Top Bar */
+    .top-bar {
+      background: #222;
+      color: white;
+      padding: 10px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .center-nav a {
+      margin: 0 10px;
+      padding: 6px 15px;
+      text-decoration: none;
+      color: white;
+      background: green;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+    .center-nav a:hover {
+      background: #32cd32;
+    }
+    .auth-links a {
+      color: white;
+      margin-left: 18px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    .auth-links a:hover { color: #ff4e50; }
+    .signup-btn {
+      padding: 6px 14px;
+      background: #ff4e50;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .signup-btn:hover {
+      background: #ff6a6a;
+      color: white;
+    }
+
+    /* Reservation Section */
+    .reservation-section {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #fff8f2 55%, #fff4e6 45%);
+      min-height: 70vh;
+    }
+    .reservation-section h1 {
+      color: #ff4e50;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .reservation-section p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+    .reservation-form {
+      background: white;
+      max-width: 500px;
+      margin: auto;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    .reservation-form input,
+    .reservation-form select,
+    .reservation-form button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .reservation-form button {
+      background: linear-gradient(45deg, #ff4e50, #f9d423);
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .reservation-form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, #333, #555);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    footer .social a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.4rem;
+      transition: all 0.3s ease;
+    }
+    footer .social a:hover { 
+      color: #ff4e50;
+      transform: scale(1.2);
+    }
+    footer address a { color:white; text-decoration:none; }
+    footer address a:hover { text-decoration:underline; }
+    hr { border:0; border-top:1px solid #777; margin:15px 0; }
+  </style>
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="logo">TastyByte</div>
+    <div class="center-nav">
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'menu' %}">Menu</a>
+      <a href="{% url 'contact' %}">Contact</a>
+    </div>
+    <div class="auth-links">
+      <a href="#login">Login</a>
+      <a href="#signup" class="signup-btn">Signup</a>
+    </div>
+  </div>
+
+  <!-- Reservation Section -->
+  <section class="reservation-section">
+    <h1>Reserve Your Table</h1>
+    <p>Book your spot in advance and enjoy a hassle-free dining experience at Tasty Byte.</p>
+
+    <form class="reservation-form">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <input type="date" required>
+      <input type="time" required>
+      <select required>
+        <option value="">Number of Guests</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3-4</option>
+        <option>5-6</option>
+        <option>7+</option>
+      </select>
+      <button type="submit">Reserve Now</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+      <address style="font-style:normal; line-height:1.6; margin:0;">
+        📞 7880821765 <br>
+        📧 <a href="mailto:info@myrestaurant.com">info@myrestaurant.com</a><br>
+        📍 <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">123 Robertsganj, Sonbhadra, India</a>
+      </address>
+      <div class="social" style="display:flex; gap:10px;">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <hr>
+    <p>&copy; 2025 Tasty Byte. All rights reserved.</p>
+  </footer>
+</body>
+</html>
