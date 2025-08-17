@@ -47,3 +47,8 @@ def menu_items(request):
 
 def contact(request):
     return render(request, 'home/contact.html')
+
+
+def reservation_page(request):
+    return render(request, "home/reservations.html")
+
