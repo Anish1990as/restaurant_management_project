@@ -1,4 +1,4 @@
- {% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,8 +6,58 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tasty Byte - Home</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style> 
+<style>
 
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #222, #444);
+  padding: 12px 40px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #ff4e50;
+  letter-spacing: 1px;
+}
+
+.center-nav a {
+  color: white;
+  margin: 0 18px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+.center-nav a:hover {
+  color: #ff4e50;
+}
+
+.auth-links a {
+  color: white;
+  margin-left: 18px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+.auth-links a:hover {
+  color: #ff4e50;
+}
+
+.signup-btn {
+  padding: 6px 14px;
+  background: #ff4e50;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.signup-btn:hover {
+  background: #ff6a6a;
+  color: white;
+}
+
+/* ===== General Styling ===== */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -18,7 +68,7 @@ body {
 
 a { text-decoration: none; }
 
- 
+/* ===== Hero Section with Gradient Overlay ===== */
     .hero-section {
     background: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe') center/cover no-repeat;
     color: white;
@@ -121,7 +171,7 @@ a { text-decoration: none; }
     box-shadow: 0 16px 40px rgba(0,0,0,0.25);
 }
 
- 
+/* ===== Animations ===== */
 @keyframes fadeInLeft {
     0% { opacity: 0; transform: translateX(-50px); }
     100% { opacity: 1; transform: translateX(0); }
@@ -131,12 +181,12 @@ a { text-decoration: none; }
     100% { opacity: 1; transform: translateX(0); }
 }
 
- 
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
     .about-section { flex-direction: column-reverse; padding: 4rem 1rem; }
     .about-image { width: 90%; margin-bottom: 2rem; }
 }
- 
+/* ===== Menu Section with Gradient Cards ===== */
 .menu-section {
     background-color: #fff4e6;
     padding: 3rem 1rem;
@@ -176,7 +226,7 @@ a { text-decoration: none; }
 .menu-card h3 { margin-top: 0.8rem; color: #ff4e50; }
 .menu-card p { font-size: 0.95rem; color: #555; }
 
- 
+/* ===== Visit Section with Diagonal Stripes ===== */
 .visit-section {
     background: repeating-linear-gradient(
         45deg,
@@ -209,7 +259,7 @@ a { text-decoration: none; }
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
- 
+/* ===== Footer with Gradient & Hover Glow ===== */
 footer {
     background: linear-gradient(90deg, #333, #555);
     color: white;
@@ -230,7 +280,7 @@ footer address a { color:white; text-decoration:none; }
 footer address a:hover { text-decoration:underline; }
 hr { border:0; border-top:1px solid #777; margin:15px 0; }
 
- 
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
     .about-section { flex-direction: column-reverse; }
     .menu-items { gap: 1rem; }
@@ -239,12 +289,30 @@ hr { border:0; border-top:1px solid #777; margin:15px 0; }
 </head>
 <body>
 
+<div class="top-bar">
+  <div class="logo">TastyByte</div>
+  
+  <!-- Center Navigation -->
+  <div class="center-nav">
+    <a href="{% url 'about' %}" class="explore-menu-button">About</a>
+    <a href="{% url 'menu' %}" class="explore-menu-button">Menu</a>
+    <a href="{% url 'contact' %}" class="explore-menu-button">Contact</a>
+  </div>
+
+  <!-- Right Side Auth Links -->
+  <div class="auth-links">
+    <a href="#login" class="signup-btn">Login</a>
+    <a href="#signup" class="signup-btn">Signup</a>
+  </div>
+</div>
+
+
 <!-- Hero Section -->
 <section class="hero-section">
     <h1>Welcome to Tasty Byte</h1>
     <img src="{% static 'images/testy.jpg' %}" alt="Restaurant Logo" class="hero-logo">
     <p>Enjoy the best food in town!</p>
-    <a href="{% url 'menu' %}"  class="explore-menu-button">View Menu</a>
+    <a href="{% url 'menu' %}" class="explore-menu-button">View Menu</a>
 </section>
 
 <!-- About Us -->
@@ -286,16 +354,16 @@ hr { border:0; border-top:1px solid #777; margin:15px 0; }
 <section class="visit-section">
     <h3>Visit Us</h3>
     <p>123 Robertsganj ,Sonbhadra City</p>
-    <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">?? View on Google Maps</a>
+    <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">📍 View on Google Maps</a>
 </section>
 
 <!-- Footer -->
 <footer>
     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
         <address style="font-style:normal; line-height:1.6; margin:0;">
-            ?? 7880821765 <br>
-            ?? <a href="mailto:info@myrestaurant.com">info@myrestaurant.com</a><br>
-            ?? <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">123 Robertsganj, Sonbhadra, India</a>
+            📞 7880821765 <br>
+            📧 <a href="mailto:info@myrestaurant.com">info@myrestaurant.com</a><br>
+            📍 <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">123 Robertsganj, Sonbhadra, India</a>
         </address>
         <div class="social" style="display:flex; gap:10px;">
             <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
