@@ -1,169 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Homepage</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        header p {
-            margin: 5px 0;
-            font-size: 1.2rem;
-        }
-        section {
-            padding: 40px;
-            text-align: center;
-        }
-        section h2 {
-            color: #222;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-        section p {
-            max-width: 600px;
-            margin: auto;
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: #555;
-        }
-        a.button {
-            display: inline-block;
-            margin-top: 25px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
-        a.button:hover {
-            background-color: #388E3C;
-        }
-        .services {
-            background-color: #e8f5e9;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .service-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .service-card {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            width: 250px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        @media (max-width: 600px) {
-            .service-card {
-             width: 100%; /* pura screen le lega */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6e8efb, #a777e3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-        }
-        .service-card h3 {
-            margin-top: 0;
-            color: #4CAF50;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
-        }
-    </style>
+
+    .contact-container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 650px;
+      width: 100%;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      color: #fff;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 32px;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, #ffdf6c, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      margin: 10px 0;
+      line-height: 1.6;
+      text-align: center;
+    }
+ 
+
+    form {
+      margin-top: 20px;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+    }
+    input, textarea {
+      background: rgba(255,255,255,0.9);
+      color: #333;
+    }
+    button {
+      background: #ffdf6c;
+      color: #333;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #ffd43b;
+      transform: scale(1.05);
+    }
+    .error {
+      color: #ff4e50;
+      font-size: 0.9em;
+    }
+
+    .contact-info {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .contact-info strong {
+      display: block;
+      margin-top: 15px;
+      font-size: 16px;
+      color: #ffdf6c;
+      transition: 0.3s;
+    }
+
+    .contact-info p a {
+      text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .contact-info p a:hover {
+      color: #ffdf6c;
+    }
+
+    .social-links {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-links a {
+      text-decoration: none;
+      font-size: 20px;
+      color: white;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 12px;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      background: #ffdf6c;
+      color: #333;
+      transform: scale(1.15) rotate(8deg);
+    }
+
+    iframe {
+      margin-top: 25px;
+      border-radius: 15px;
+      width: 100%;
+      height: 250px;
+      border: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    
+    footer {
+      background: linear-gradient(90deg, #333, #555);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 40px;
+      width: 100%;
+    }
+    footer .social a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.4rem;
+      transition: all 0.3s ease;
+    }
+    footer .social a:hover { 
+      color: #ff4e50;
+      transform: scale(1.2);
+    }
+    footer address a { color:white; text-decoration:none; }
+    footer address a:hover { text-decoration:underline; }
+    hr { border:0; border-top:1px solid #777; margin:15px 0; }
+  </style>
 </head>
+
 <body>
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <p>We'd love to hear from you! Fill the form or reach out using details below:</p>
 
-    <!-- Header -->
-    <header>
-        <h1>Welcome to My Homepage</h1>
-        <p>Your solution for bookings</p>
-    </header>
+    <!-- ===== Contact Form ===== -->
+    <form id="contactForm">
+      <input type="text" id="name" name="name" placeholder="Your Name">
+      <span id="nameError" class="error"></span>
 
-    <!-- Main Content -->
-    <section>
-        <h2>About Us</h2>
-        <p>
-            We offer restaurant reservations — all in one place.
-            Fast, secure, and easy to use.
-        </p>
-        <a href="#services" class="button">Explore Services</a>
-        <a href="#services" aria-label="Explore Services section" role="button"></a>
-    </section>
+      <input type="email" id="email" name="email" placeholder="Your Email">
+      <span id="emailError" class="error"></span>
 
-    <!-- Services -->
-     <section id="services" style="padding:20px; background-color:#e8f5e9; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-       <h2 style="text-align:center; font-size:1.8rem; margin-bottom:30px; color:#222;">Our Services</h2>
-       <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
-    <div style="background-color:#f9f9f9; padding:20px; border-radius:8px; width:250px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-                <h3 style="margin-top:0; color:#4CAF50;">Restaurant Booking</h3>
-                <p style="color:#555;">Find and book the best Restaurants instantly.</p>
-            </div>
-        </div>
-    </section>
-<!-- Font Awesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <textarea id="message" name="message" placeholder="Your Message"></textarea>
 
-<footer style="background-color:#333; color:white; padding:20px; margin-top:40px;">
+      <button type="submit">Send Message</button>
+    </form>
 
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
-
-        <!-- Contact Information (Left Corner) -->
-        <address style="font-style:normal; line-height:1.6; margin:0;">
-            📞 {{ phone_number }} <br>
-            📧 <a href="mailto:info@myrestaurant.com" style="color:white; text-decoration:none;">info@myrestaurant.com</a><br>
-            📍 <a href="https://goo.gl/maps/example" target="_blank" style="color:white; text-decoration:none;">123 Main Street, City, Country</a>
-        </address>
-
-        <!-- Social Media Icons (Right Corner) -->
-        <div style="display:flex; gap:10px;">
-            <a href="https://facebook.com" target="_blank" style="color:white; font-size:1.2rem;">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://instagram.com" target="_blank" style="color:white; font-size:1.2rem;">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://twitter.com" target="_blank" style="color:white; font-size:1.2rem;">
-                <i class="fab fa-twitter"></i>
-            </a>
-        </div>
+    <div class="contact-info">
+      <strong><i class="fas fa-envelope"></i> Email:</strong>
+      <p><a href="mailto:support@testybyte.com">support@testybyte.com</a></p>
+      
+      <strong><i class="fas fa-phone"></i> Phone:</strong>
+      <p><a href="tel:+917880821765">+91 7880821765</a></p>
+      
+      <strong><i class="fas fa-map-marker-alt"></i> Address:</strong>
+      <p>123, Main Street, Sonbhadra, Uttar Pradesh, India</p>
     </div>
 
-    <!-- Horizontal Line -->
-    <hr style="border:0; border-top:1px solid #555; margin:15px 0;">
+    <div class="social-links">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
 
-    <!-- Copyright -->
-    <p style="margin:0; text-align:center;">&copy; 2025 My Website. All rights reserved.</p>
+    <!-- Google Maps Embed -->
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3641.7535466843143!2d82.78315321539894!3d24.6866558841271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398f2d9b6e1c5c71%3A0x3b4f6e6b6a2b6d55!2sSonbhadra%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1693665847721!5m2!1sen!2sin" 
+      allowfullscreen="" loading="lazy">
+    </iframe>
+  </div>
 
+    <!-- Footer -->
+<footer>
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <address style="font-style:normal; line-height:1.6; margin:0;">
+            📞 7880821765 <br>
+            📧 <a href="mailto:info@myrestaurant.com">info@myrestaurant.com</a><br>
+            📍 <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">123 Robertsganj, Sonbhadra, India</a>
+        </address>
+
+         
+        <div class="opening-hours" style="text-align:right; line-height:1.6; font-size:14px;">
+            <strong>Opening Hours:</strong><br>
+                Mon-Fri: 11am - 9pm <br>
+                Sat-Sun: 10am - 10pm
+        </div>
+
+        <div class="social" style="display:flex; gap:10px;">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+    <hr>
+    <p style="margin:5px 0; font-size:14px;">&copy; 2025 Tasty Byte. All rights reserved.</p>
 </footer>
 
+  <!-- ===== Client-side Validation Script ===== -->
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      let isValid = true;
 
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+
+      let nameError = document.getElementById("nameError");
+      let emailError = document.getElementById("emailError");
+
+      nameError.textContent = "";
+      emailError.textContent = "";
+
+      if (name === "") {
+        nameError.textContent = "Please enter your name.";
+        isValid = false;
+      }
+
+      if (email === "") {
+        emailError.textContent = "Please enter your email.";
+        isValid = false;
+      } else {
+        let emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+        if (!emailPattern.test(email)) {
+          emailError.textContent = "Please enter a valid email address.";
+          isValid = false;
+        }
+      }
+
+      if (!isValid) {
+        event.preventDefault();
+      }
+    });
+  </script>
 </body>
 </html>
- 
