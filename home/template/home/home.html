@@ -281,6 +281,60 @@
       .about-image { width: 90%; margin-bottom: 2rem; }
       .menu-items { gap: 1rem; }
     }
+
+    .feedback-section {
+        text-align: center;
+        background: #f0f4f8;
+        padding: 40px 20px;
+        border-radius: 12px;
+        max-width: 600px;
+        margin: 50px auto;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .feedback-section h3 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .feedback-section p {
+        margin-bottom: 20px;
+        color: #555;
+    }
+
+    .feedback-form input,
+    .feedback-form textarea {
+        width: 100%;
+        padding: 12px 15px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        resize: none;
+    }
+
+    .feedback-form input:focus,
+    .feedback-form textarea:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+    }
+
+    .feedback-form button {
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        color: white;
+        padding: 12px 25px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .feedback-form button:hover {
+        transform: scale(1.05);
+    }
   </style>
 </head> 
 
@@ -351,6 +405,19 @@
       <p>123 Robertsganj ,Sonbhadra City</p>
       <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">📍 View on Google Maps</a>
   </section>
+
+     
+  <!-- Feedback Section -->
+<section class="feedback-section py-4">
+  <h3>We Value Your Feedback</h3>
+  <p>Share your thoughts and help us improve our services.</p>
+  <form method="POST" action="{% url 'feedback' %}" class="feedback-form">
+    {% csrf_token %}
+    
+    <button type="submit">Send Feedback</button>
+  </form>
+</section>
+
 
         <!-- Footer -->
 <footer>
