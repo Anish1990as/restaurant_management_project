@@ -1,6 +1,8 @@
- from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.conf import settings
-from .models import Restaurant
+from .models import Restaurant, MenuItem, Feedback
+from .forms import FeedbackForm
+
 
 def home(request):
     restaurant_name = getattr(settings, 'RESTAURANT_NAME', 'Tasty Byte')
@@ -11,7 +13,8 @@ def home(request):
     })
 
 def menu(request):
-    return render(request, 'menu.html')
+    items = MenuItem.objects.all()
+    return render(request, 'menu.html', {'items': items})
 
 def about(request):
     return render(request, 'home/aboutus.html')
@@ -19,8 +22,39 @@ def about(request):
 def custom_404(request, exception):
     return render(request, 'home/404.html', status=404)
 
+def contact(request):
+    return render(request, 'home/contact.html')
+
+def reservations(request):
+    return render(request, 'home/reservations.html')
+
+def feedback(request):
+    return render(request, 'home/feedback.html')
+
+def feedback_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        Feedback.objects.create(name=name, email=email, message=message)
+        return redirect('feedback_thanks')
+    return render(request, 'home/feedback.html')
+
+def feedback_thanks(request):
+    return render(request, 'home/feedback_thanks.html')
+
+def search_menu(request):
+    query = request.GET.get("q", "")
+    results = []
+
+    if query:
+        results = MenuItem.objects.filter(name__icontains=query)
+
+    return render(request, "search_results.html", {"query": query, "results": results})
+
+
 def menu_items(request):
-    # Hardcoded menu items for now
+     
     menu = [
          {"name": "Garlic Bread", "price": 3.99, "image": "https://source.unsplash.com/200x150/?garlic-bread"},
         {"name": "Spring Rolls", "price": 4.49, "image": "https://source.unsplash.com/200x150/?spring-rolls"},
@@ -45,28 +79,4 @@ def menu_items(request):
     ]
     return render(request, "home/menu.html", {"menu": menu})
 
-def contact(request):
-    return render(request, 'home/contact.html')
-
-
-def reservation_page(request):
-    return render(request, "home/reservations.html")
-
-
-def feedback(request):
-    return render(request, 'home/feedback.html')
-
-
-def feedback_view(request):
-    if request.method == 'POST':
-        form = FeedbackForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('feedback_thanks')  # Redirect to thank you page
-    else:
-        form = FeedbackForm()
-    return render(request, 'home.html', {'form': form})
-
-
-def feedback_thanks(request):
-    return render(request, 'home/feedback_thanks.html')
+ 
