@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
 from .models import Restaurant, MenuItem, Feedback
-from .forms import FeedbackForm
+from .forms import Feedback 
 
 
 def home(request):
@@ -39,8 +39,20 @@ def feedback_view(request):
         Feedback.objects.create(name=name, email=email, message=message)
         return redirect('feedback_thanks')
     return render(request, 'home/feedback.html')
+    
 
 def feedback_thanks(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
+
+        Feedback.objects.create(
+            name=name,
+            email=email,
+            message=message
+        )
+        return redirect("feedback")  # success page
     return render(request, 'home/feedback_thanks.html')
 
 def search_menu(request):
@@ -52,31 +64,7 @@ def search_menu(request):
 
     return render(request, "search_results.html", {"query": query, "results": results})
 
-
-def menu_items(request):
-     
-    menu = [
-         {"name": "Garlic Bread", "price": 3.99, "image": "https://source.unsplash.com/200x150/?garlic-bread"},
-        {"name": "Spring Rolls", "price": 4.49, "image": "https://source.unsplash.com/200x150/?spring-rolls"},
-        {"name": "Tomato Soup", "price": 2.99, "image": "https://source.unsplash.com/200x150/?tomato-soup"},
-
-        # Main Course
-        {"name": "Pizza Margherita", "price": 8.99, "image": "https://source.unsplash.com/200x150/?pizza"},
-        {"name": "Cheeseburger", "price": 6.49, "image": "https://source.unsplash.com/200x150/?burger"},
-        {"name": "Pasta Alfredo", "price": 7.99, "image": "https://source.unsplash.com/200x150/?pasta"},
-        {"name": "Grilled Chicken", "price": 10.99, "image": "https://source.unsplash.com/200x150/?grilled-chicken"},
-        {"name": "Paneer Butter Masala", "price": 9.49, "image": "https://source.unsplash.com/200x150/?paneer"},
-
-        # Desserts
-        {"name": "Chocolate Lava Cake", "price": 5.49, "image": "https://source.unsplash.com/200x150/?chocolate-cake"},
-        {"name": "Gulab Jamun", "price": 3.49, "image": "https://source.unsplash.com/200x150/?gulab-jamun"},
-        {"name": "Cheesecake", "price": 6.99, "image": "https://source.unsplash.com/200x150/?cheesecake"},
-
-        # Drinks
-        {"name": "Fresh Lime Soda", "price": 1.99, "image": "https://source.unsplash.com/200x150/?lime-soda"},
-        {"name": "Cold Coffee", "price": 2.99, "image": "https://source.unsplash.com/200x150/?cold-coffee"},
-        {"name": "Mango Smoothie", "price": 3.99, "image": "https://source.unsplash.com/200x150/?mango-smoothie"},
-    ]
-    return render(request, "home/menu.html", {"menu": menu})
-
+def menu_list(request):
+    menu_items = MenuItem.objects.all()
+    return render(request, "home/menu.html", {"menu_items": menu_items})
  
