@@ -42,17 +42,7 @@ def feedback_view(request):
     
 
 def feedback_thanks(request):
-    if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        message = request.POST.get("message")
-
-        Feedback.objects.create(
-            name=name,
-            email=email,
-            message=message
-        )
-        return redirect("feedback")  # success page
+      
     return render(request, 'home/feedback_thanks.html')
 
 def search_menu(request):
