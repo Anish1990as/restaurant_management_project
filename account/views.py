@@ -11,7 +11,7 @@ def profile_view(request):
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            return redirect("profile")  # same page reload
+            return redirect("profile")   
     else:
         form = UserProfileForm(instance=profile)
 
