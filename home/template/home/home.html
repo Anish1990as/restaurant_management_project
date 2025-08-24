@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    
+    /* ===== TOP BAR ===== */
     .top-bar {
       background: #222;
       color: white;
@@ -18,25 +18,17 @@
       align-items: center;
       font-family: 'Segoe UI', sans-serif;
     }
-
- 
-  .top-bar .center-nav a {
-    margin: 0 10px;
-    padding: 6px 15px;
-    text-decoration: none;
-    color: white;
-    background: green;
-    border-radius: 6px;
-    font-weight: 500;
-    transition: background 0.3s ease;
-  }
-
-  .top-bar .center-nav a:hover {
-    background: #32cd32;  
-  }
-    .center-nav a:hover {
-      color: #ff4e50;
+    .top-bar .center-nav a {
+      margin: 0 10px;
+      padding: 6px 15px;
+      text-decoration: none;
+      color: white;
+      background: green;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.3s ease;
     }
+    .top-bar .center-nav a:hover { background: #32cd32; }
     .auth-links a {
       color: white;
       margin-left: 18px;
@@ -44,21 +36,16 @@
       font-size: 1rem;
       transition: all 0.3s ease;
     }
-    .auth-links a:hover {
-      color: #ff4e50;
-    }
+    .auth-links a:hover { color: #ff4e50; }
     .signup-btn {
       padding: 6px 14px;
       background: #ff4e50;
       border-radius: 20px;
       font-weight: 500;
     }
-    .signup-btn:hover {
-      background: #ff6a6a;
-      color: white;
-    }
+    .signup-btn:hover { background: #ff6a6a; color: white; }
 
-    
+    /* ===== GLOBAL ===== */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
@@ -68,7 +55,7 @@
     }
     a { text-decoration: none; }
 
-    
+    /* ===== HERO ===== */
     .hero-section {
       background: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe') center/cover no-repeat;
       color: white;
@@ -82,11 +69,7 @@
       margin: 0;
       text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
     }
-    .hero-section p {
-      font-size: 1.3rem;
-      margin-top: 0.5rem;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
-    }
+    .hero-section p { font-size: 1.3rem; margin-top: 0.5rem; }
     .hero-logo {
       position: absolute;
       top: 20px;
@@ -106,183 +89,82 @@
       font-weight: bold;
       transition: background 0.3s ease, transform 0.2s ease;
     }
-    .explore-menu-button:hover {
-      background: #e84142;
-      transform: scale(1.05);
-    }
+    .explore-menu-button:hover { background: #e84142; transform: scale(1.05); }
 
-     
+    /* ===== ABOUT ===== */
     .about-section {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
       padding: 5rem 2rem;
-      position: relative;
       background: linear-gradient(135deg, #fff8f2 55%, #fff4e6 45%);
       gap: 3rem;
     }
-    .about-text {
-      flex: 1 1 450px;
-      max-width: 600px;
-      animation: fadeInLeft 1s ease forwards;
-      opacity: 0;
-    }
-    .about-text h2 {
-      color: #ff4e50;
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-    }
-    .about-text .highlight {
-      color: #f9d423;
-      font-weight: bold;
-    }
-    .about-text p {
-      line-height: 1.6;
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-    }
-    .about-text .btn-about {
+    .about-text { flex: 1 1 450px; max-width: 600px; }
+    .about-text h2 { color: #ff4e50; font-size: 2.2rem; margin-bottom: 1rem; }
+    .about-text .highlight { color: #f9d423; font-weight: bold; }
+    .about-text p { line-height: 1.6; font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .btn-about {
       display: inline-block;
       background: linear-gradient(45deg, #ff4e50, #f9d423);
       color: white;
       padding: 0.8rem 2rem;
       border-radius: 30px;
       font-weight: bold;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .about-text .btn-about:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-    .about-image {
-      flex: 1 1 350px;
-      animation: fadeInRight 1s ease forwards;
-      opacity: 0;
-    }
+    .about-image { flex: 1 1 350px; }
     .about-image img {
-      width: 100%;
-      border-radius: 25px;
+      width: 100%; border-radius: 25px;
       box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    .about-image img:hover {
-      transform: translateY(-10px) rotate(-1deg);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
     }
 
-    
-    @keyframes fadeInLeft {
-      0% { opacity: 0; transform: translateX(-50px); }
-      100% { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes fadeInRight {
-      0% { opacity: 0; transform: translateX(50px); }
-      100% { opacity: 1; transform: translateX(0); }
-    }
-
-    
-    .menu-section {
-      background-color: #fff4e6;
+    /* ===== MENU SLIDER ===== */
+    .menu-slider-section {
+      background: #fdf7f2;
       padding: 3rem 1rem;
       text-align: center;
     }
-    .menu-section h2 {
-      color: #ff4e50;
-      margin-bottom: 2rem;
-      font-size: 2rem;
-    }
-    .menu-items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
+    .menu-slider-section h2 { font-size: 2rem; margin-bottom: 2rem; color: #ff4e50; }
+    .slider-container { position: relative; overflow: hidden; }
+    .slider-wrapper { display: flex; gap: 1.5rem; transition: transform 0.5s ease-in-out; }
     .menu-card {
-      background: white;
-      border-radius: 15px;
-      padding: 1rem;
-      width: 260px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      border: 3px solid transparent;
-      background-image: linear-gradient(white, white), linear-gradient(45deg, #ff4e50, #f9d423);
-      background-origin: border-box;
-      background-clip: content-box, border-box;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      flex: 0 0 280px; background: white; border-radius: 15px; padding: 1rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1); text-align: center;
     }
-    .menu-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    .menu-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; }
+    .menu-card h3 { margin: 0.5rem 0; color: #ff4e50; }
+    .menu-card p { font-size: 0.9rem; color: #555; }
+    .price { font-weight: bold; color: #28a745; margin: 8px 0; display: block; }
+    .order-btn {
+      background: #ff4e50; color: white; border: none;
+      padding: 0.6rem 1.2rem; border-radius: 25px; cursor: pointer;
     }
-    .menu-card img {
-      width: 100%;
-      border-radius: 12px;
+    .order-btn:hover { background: #e43d3f; }
+    .prev-btn, .next-btn {
+      position: absolute; top: 40%; transform: translateY(-50%);
+      background: rgba(0,0,0,0.5); color: white;
+      border: none; padding: 0.8rem 1rem;
+      border-radius: 50%; cursor: pointer; font-size: 1.5rem;
     }
-    .menu-card h3 { margin-top: 0.8rem; color: #ff4e50; }
-    .menu-card p { font-size: 0.95rem; color: #555; }
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
 
-     
+    /* ===== VISIT US ===== */
     .visit-section {
-      background: repeating-linear-gradient(
-        45deg,
-        #fff4e6,
-        #fff4e6 20px,
-        #fffaf1 20px,
-        #fffaf1 40px
-      );
-      text-align: center;
-      padding: 3rem 1rem;
-      border-top: 3px solid #ff4e50;
+      background: linear-gradient(135deg, #fff6f6, #ffecec);
+      text-align: center; padding: 3rem 1rem; border-top: 3px solid #ff4e50;
     }
-    .visit-section h3 {
-      color: #ff4e50;
-      font-size: 1.9rem;
-      margin-bottom: 0.5rem;
-    }
+    .visit-section h3 { color: #ff4e50; font-size: 1.9rem; margin-bottom: 0.5rem; }
     .visit-section a {
       display: inline-block;
       background: linear-gradient(45deg, #ff4e50, #f9d423);
-      color: white;
-      padding: 0.9rem 2rem;
-      border-radius: 30px;
-      font-weight: bold;
-      margin-top: 0.5rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .visit-section a:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      color: white; padding: 0.9rem 2rem;
+      border-radius: 30px; font-weight: bold;
     }
 
-   
-    footer {
-      background: linear-gradient(90deg, #333, #555);
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-    footer .social a {
-      color: white;
-      margin: 0 10px;
-      font-size: 1.4rem;
-      transition: all 0.3s ease;
-    }
-    footer .social a:hover { 
-      color: #ff4e50;
-      transform: scale(1.2);
-    }
-    footer address a { color:white; text-decoration:none; }
-    footer address a:hover { text-decoration:underline; }
-    hr { border:0; border-top:1px solid #777; margin:15px 0; }
-
-    
-    @media (max-width: 768px) {
-      .about-section { flex-direction: column-reverse; padding: 4rem 1rem; }
-      .about-image { width: 90%; margin-bottom: 2rem; }
-      .menu-items { gap: 1rem; }
-    }
-
-    .feedback-section {
+    /* ===== FEEDBACK ===== */
+   .feedback-section {
         text-align: center;
         background: #f0f4f8;
         padding: 40px 20px;
@@ -335,78 +217,79 @@
     .feedback-form button:hover {
         transform: scale(1.05);
     }
-</style>
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: linear-gradient(90deg, #333, #555);
+      color: white; padding: 2rem; text-align: center;
+    }
+    footer .social a { color: white; margin: 0 10px; font-size: 1.4rem; }
+    footer .social a:hover { color: #ff4e50; }
+  </style>
 </head> 
 
 <body>
-  <!-- Top Bar -->
+  <!-- TOP BAR -->
   <div class="top-bar">
     <div class="logo">TastyByte</div>
-    
-    
     <div class="center-nav">
       <a href="{% url 'about' %}">About</a>
       <a href="{% url 'menu' %}">Menu</a>
       <a href="{% url 'contact' %}">Contact</a>
     </div>
-
-     
     <div class="auth-links">
       <a href="#login">Login</a>
-      <a href="#signup" class="signup-btn">Signup</a>
+      <a href="{% url 'profile' %}" class="signup-btn">Account</a>
     </div>
   </div>
 
-  <!-- Hero Section -->
+  <!-- HERO -->
   <section class="hero-section">
-      <h1>Welcome to Tasty Byte</h1>
-      <img src="{% static 'images/testy.jpg' %}" alt="Restaurant Logo" class="hero-logo">
-      <p>Enjoy the best food in town!</p>
-      <a href="{% url 'menu' %}" class="explore-menu-button">View Menu</a>
+    <h1>Welcome to Tasty Byte</h1>
+    <img src="{% static 'images/testy.jpg' %}" alt="Restaurant Logo" class="hero-logo">
+    <p>Enjoy the best food in town!</p>
+    <a href="{% url 'menu' %}" class="explore-menu-button">View Menu</a>
   </section>
 
-  <!-- About Us -->
+  <!-- ABOUT -->
   <section class="about-section">
-      <div class="about-text">
-          <h2>About <span class="highlight">Tasty Byte</span></h2>
-          <p>At <span class="highlight">Tasty Byte</span>, dining is more than just a meal—it's an <span class="highlight">experience</span>. Our chefs create dishes with love, using only <span class="highlight">fresh</span> and locally sourced ingredients. From cozy dinners to grand celebrations, every moment here is <span class="highlight">crafted to perfection</span>.</p>
-          <a href="{% url 'menu' %}" class="btn-about">Explore Our Menu</a>
-      </div>
-      <div class="about-image">
-          <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de" alt="Tasty Byte Food">
-      </div>
+    <div class="about-text">
+      <h2>About <span class="highlight">Tasty Byte</span></h2>
+      <p>At <span class="highlight">Tasty Byte</span>, dining is more than just a meal—it's an <span class="highlight">experience</span>. Our chefs create dishes with love, using only <span class="highlight">fresh</span> and locally sourced ingredients.</p>
+      <a href="{% url 'menu' %}" class="btn-about">Explore Our Menu</a>
+    </div>
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de" alt="Tasty Byte Food">
+    </div>
   </section>
 
-  <!-- Menu Highlights -->
-  <section class="menu-section" id="menu">
-      <h2>Our Favorites</h2>
-      <div class="menu-items">
-          <div class="menu-card">
-              <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc" alt="Burger">
-              <h3>Classic Cheese Burger</h3>
-              <p>Juicy beef patty with melted cheese, fresh lettuce & tomatoes.</p>
-          </div>
-          <div class="menu-card">
-              <img src="https://images.unsplash.com/photo-1604908177225-c3a43b2d3c8d" alt="Pasta">
-              <h3>Creamy Alfredo Pasta</h3>
-              <p>Rich and creamy sauce with tender chicken and herbs.</p>
-          </div>
-          <div class="menu-card">
-              <img src="https://img.freepik.com/premium-photo/traditional-chicken-alfredo-pasta-dish-featuring-tender-grilled-chicken-creamy-alfredo-sauce_1044970-640.jpg" alt="Pizza">
-              <h3>Margherita Pizza</h3>
-              <p>Fresh mozzarella, basil, and tangy tomato sauce.</p>
-          </div>
+  <!-- MENU SLIDER -->
+  <section class="menu-slider-section" id="menu">
+    <h2>?? Our Signature Dishes</h2>
+    <div class="slider-container">
+      <button class="prev-btn">&#10094;</button>
+      <div class="slider-wrapper">
+        {% for item in menu_items %}
+        <div class="menu-card">
+          <img src="{{ item.image|default:'https://via.placeholder.com/260x160.png?text=No+Image' }}" alt="{{ item.name }}">
+          <h3>{{ item.name }}</h3>
+          <p>{{ item.description }}</p>
+          <span class="price">?{{ item.price }}</span>
+          <button class="order-btn">Order Now</button>
+        </div>
+        {% endfor %}
       </div>
+      <button class="next-btn">&#10095;</button>
+    </div>
   </section>
 
-  <!-- Visit Us -->
+  <!-- VISIT US -->
   <section class="visit-section">
-      <h3>Visit Us</h3>
-      <p>123 Robertsganj ,Sonbhadra City</p>
-      <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">📍 View on Google Maps</a>
+    <h3>?? Visit Us</h3>
+    <p>123 Robertsganj , Sonbhadra City</p>
+    <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">View on Google Maps</a>
   </section>
 
-     
   <!-- Feedback Section -->
 <section class="feedback-section py-4">
   <h3>We Value Your Feedback</h3>
@@ -418,14 +301,14 @@
   </form>
 </section>
 
-
+  
         <!-- Footer -->
 <footer>
     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
         <address style="font-style:normal; line-height:1.6; margin:0;">
-            📞 7880821765 <br>
-            📧 <a href="mailto:info@myrestaurant.com">info@myrestaurant.com</a><br>
-            📍 <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">123 Robertsganj, Sonbhadra, India</a>
+            ?? 7880821765 <br>
+            ?? <a href="mailto:info@myrestaurant.com">info@myrestaurant.com</a><br>
+            ?? <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">123 Robertsganj, Sonbhadra, India</a>
         </address>
 
      
@@ -446,3 +329,51 @@
 </footer>
 </body>
 </html>
+
+
+  <!-- SLIDER JS -->
+  <script>
+    const wrapper = document.querySelector(".slider-wrapper");
+    const prevBtn = document.querySelector(".prev-btn");
+    const nextBtn = document.querySelector(".next-btn");
+
+    const cardWidth = 300; // card + gap
+    let autoSlide;
+
+    function startAutoSlide() {
+      autoSlide = setInterval(() => moveSlide(1), 4000);
+    }
+
+    function moveSlide(direction) {
+      if (direction === 1) {
+        if (wrapper.scrollLeft + wrapper.offsetWidth >= wrapper.scrollWidth) {
+          wrapper.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          wrapper.scrollBy({ left: cardWidth, behavior: "smooth" });
+        }
+      } else {
+        if (wrapper.scrollLeft === 0) {
+          wrapper.scrollTo({ left: wrapper.scrollWidth, behavior: "smooth" });
+        } else {
+          wrapper.scrollBy({ left: -cardWidth, behavior: "smooth" });
+        }
+      }
+    }
+
+    nextBtn.addEventListener("click", () => {
+      clearInterval(autoSlide);
+      moveSlide(1);
+      startAutoSlide();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      clearInterval(autoSlide);
+      moveSlide(-1);
+      startAutoSlide();
+    });
+
+    startAutoSlide();
+  </script>
+</body>
+</html>
+ 
