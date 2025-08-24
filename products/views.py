@@ -56,4 +56,4 @@ class MenuView(APIView):
             {"name": "Veg Biryani", "description": "Fragrant basmati rice with vegetables", "price": 279},
             {"name": "Gulab Jamun", "description": "Sweet fried dumplings soaked in sugar syrup", "price": 99},
         ]
-        return Response({"menu": menu})
+        return Response(menu)
