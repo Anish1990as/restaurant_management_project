@@ -47,3 +47,13 @@ class ItemAPIView(APIView):
                 {"error": str(e)},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
+      
+class MenuView(APIView):
+    def get(self, request):
+        menu = [
+            {"name": "Margherita Pizza", "description": "Classic cheese and tomato pizza", "price": 299},
+            {"name": "Paneer Butter Masala", "description": "Cottage cheese in rich tomato gravy", "price": 349},
+            {"name": "Veg Biryani", "description": "Fragrant basmati rice with vegetables", "price": 279},
+            {"name": "Gulab Jamun", "description": "Sweet fried dumplings soaked in sugar syrup", "price": 99},
+        ]
+        return Response({"menu": menu})
