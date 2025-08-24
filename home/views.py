@@ -12,6 +12,11 @@ def home(request):
         'phone_number': phone_number
     })
 
+def home(request):
+    menu_items = MenuItem.objects.all()
+    return render(request, "home/home.html", {"menu_items": menu_items})
+
+
 def menu(request):
     items = MenuItem.objects.all()
     return render(request, 'menu.html', {'items': items})
