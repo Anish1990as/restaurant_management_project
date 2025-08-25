@@ -47,10 +47,4 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
  
  
-
-class RestaurantInfo(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
+ 
