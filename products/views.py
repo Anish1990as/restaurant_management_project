@@ -6,9 +6,6 @@ from rest_framework import status
 from .models import Item
 from .serializers import ItemSerializer
 
-'''
-NOTE: Conside this as a reference and follow this same coding structure or format to work on you tasks
-'''
 
 class ItemAPIView(APIView):
 
@@ -48,12 +45,6 @@ class ItemAPIView(APIView):
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
       
-class MenuView(APIView):
-    def get(self, request):
-        menu = [
-            {"name": "Margherita Pizza", "description": "Classic cheese and tomato pizza", "price": 299},
-            {"name": "Paneer Butter Masala", "description": "Cottage cheese in rich tomato gravy", "price": 349},
-            {"name": "Veg Biryani", "description": "Fragrant basmati rice with vegetables", "price": 279},
-            {"name": "Gulab Jamun", "description": "Sweet fried dumplings soaked in sugar syrup", "price": 99},
-        ]
-        return Response(menu)
+def menu_list(request):
+    items = MenuItem.objects.all()
+    return render(request, "products/menu.html", {"items": items}) 
