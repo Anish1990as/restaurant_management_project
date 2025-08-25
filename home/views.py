@@ -62,4 +62,7 @@ def search_menu(request):
 def menu_list(request):
     menu_items = MenuItem.objects.all()
     return render(request, "home/menu.html", {"menu_items": menu_items})
- 
+    
+def menu_page(request):
+    items = MenuItem.objects.all()  # sare menu items fetch kar lega
+    return render(request, "home/menu.html", {"items": items})
