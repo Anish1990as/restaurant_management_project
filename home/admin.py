@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Restaurant, MenuItem, Feedback, Order    
 
-admin.site.register(RestaurantInfo)
+ 
  
 @admin.register(Restaurant)
 class RestaurantAdmin(admin.ModelAdmin):
