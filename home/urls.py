@@ -13,5 +13,6 @@ urlpatterns = [
     path('search/', views.search_menu, name='search_menu'),
     path("menu/", views.menu_list, name="menu_list"),  
     path("account/", include("account.urls")),   
+    path("menu/", views.menu_page, name="menu"),
 ]
  
