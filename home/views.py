@@ -66,3 +66,7 @@ def menu_list(request):
 def menu_page(request):
     items = MenuItem.objects.all()  # sare menu items fetch kar lega
     return render(request, "home/menu.html", {"items": items})
+
+def home(request):
+    restaurant_info = RestaurantInfo.objects.first()
+    return render(request, 'home/home.html', {'restaurant_info': restaurant_info})
