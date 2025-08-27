@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
 from .models import Restaurant, MenuItem, Feedback
-from .forms import Feedback 
+from .forms import Feedback
 
 
 def home(request):
