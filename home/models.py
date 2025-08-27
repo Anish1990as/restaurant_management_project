@@ -47,4 +47,13 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
  
  
+class RestaurantInfo(models.Model):
+    name = models.CharField(max_length=100, default="My Restaurant")
+    phone = models.CharField(max_length=15, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
+    address = models.TextField()
+    google_map_link = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
  
