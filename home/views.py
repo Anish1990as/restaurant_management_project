@@ -70,3 +70,14 @@ def menu_page(request):
 def home(request):
     restaurant_info = RestaurantInfo.objects.first()
     return render(request, 'home/home.html', {'restaurant_info': restaurant_info})
+
+def contact_view(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Thanks — we received your details.")
+            return redirect('contact')   # redirect back to contact page
+    else:
+        form = ContactForm()
+    return render(request, "home/contact.html", {"form": form})
