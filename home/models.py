@@ -77,4 +77,4 @@ class ContactSubmission(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return f"{self.name} <{self.email}>"        
+        return f"{self.name} <{self.email}>"      
