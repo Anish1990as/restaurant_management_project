@@ -46,5 +46,10 @@ class ItemAPIView(APIView):
             )
       
 def menu_list(request):
-    items = MenuItem.objects.all()
-    return render(request, "products/menu.html", {"items": items}) 
+    query = request.GET.get("q")
+    if query:
+        menu_items = MenuItem.objects.filter(name__icontains=query)  # simple search
+    else:
+        menu_items = MenuItem.objects.all()
+
+    return render(request, "products/menu.html", {"menu": menu_items, "query": query}) 
