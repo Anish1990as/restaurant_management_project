@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us</title>
-   
+  <!-- FontAwesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -21,7 +21,7 @@
 
     .contact-container {
       background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px);  
+      backdrop-filter: blur(12px);
       border-radius: 20px;
       padding: 40px;
       max-width: 650px;
@@ -46,10 +46,10 @@
       line-height: 1.6;
       text-align: center;
     }
- 
 
+    /* === Contact Form Styling === */
     form {
-      margin-top: 20px; 
+      margin-top: 20px;
     }
     input, textarea, button {
       width: 100%;
@@ -138,7 +138,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    
+    /* ===== Footer with Gradient & Hover Glow ===== */
     footer {
       background: linear-gradient(90deg, #333, #555);
       color: white;
@@ -162,14 +162,13 @@
     hr { border:0; border-top:1px solid #777; margin:15px 0; }
   </style>
 </head>
-
 <body>
   <div class="contact-container">
     <h2>Contact Us</h2>
-    <p>We'd love to hear from you! Fill the form or reach out using details below:</p>
+    <p>We’d love to hear from you! Fill the form or reach out using details below:</p>
 
     <!-- ===== Contact Form ===== -->
-    <form id="contactForm">
+    <form id="contactForm" novalidate>
       <input type="text" id="name" name="name" placeholder="Your Name">
       <span id="nameError" class="error"></span>
 
@@ -215,9 +214,10 @@
             📍 <a href="https://maps.app.goo.gl/CgsBTJoKpnZz8UDF8" target="_blank">123 Robertsganj, Sonbhadra, India</a>
         </address>
 
-         
+        <!-- Opening Hours -->
         <div class="opening-hours" style="text-align:right; line-height:1.6; font-size:14px;">
-            <strong>Opening Hours:</strong><br>
+            <strong>Opening Hours:</strong>
+            <br>
                 Mon-Fri: 11am - 9pm <br>
                 Sat-Sun: 10am - 10pm
         </div>
@@ -255,7 +255,8 @@
         emailError.textContent = "Please enter your email.";
         isValid = false;
       } else {
-        let emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+        // fixed regex (single backslash for \s)
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email)) {
           emailError.textContent = "Please enter a valid email address.";
           isValid = false;
@@ -268,4 +269,4 @@
     });
   </script>
 </body>
-</html>
+</html> 
