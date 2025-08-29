@@ -138,6 +138,11 @@
     <div class="menu-container">
         {% for item in menu_items %}
             <div class="menu-item">
+            {% if item.image %}
+                <img src="{{ item.image.url }}" alt="{{ item.name }}">
+            {% else %}
+                <img src="{% static 'images/default-food.jpg' %}" alt="No image">
+            {% endif %}
                 <h3>{{ item.name }}</h3>
                 <p>{{ item.description|default:"No description available." }}</p>
                 <p class="price">₹{{ item.price }}</p>
