@@ -13,7 +13,7 @@ urlpatterns = [
     path("feedback_thanks/", views.feedback_thanks, name="feedback_thanks"),
     path('search/', views.search_menu, name='search_menu'),
     path("menu/", views.menu_list, name="menu_list"),  
-    path("account/", include("account.urls")),   
+    path("account/", include("account.urls")),
     path("menu/", views.menu_page, name="menu"),
 ]
  
