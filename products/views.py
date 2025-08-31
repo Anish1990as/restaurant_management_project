@@ -56,4 +56,4 @@ def menu_list(request):
 
 def menu_view(request):
     items = MenuItem.objects.all()
-    return render(request, "products/menu.html", {"items": items})
+    return render(request, "products/menu.html", {"items": menu_items})
