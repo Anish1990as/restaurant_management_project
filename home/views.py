@@ -64,7 +64,7 @@ def menu_list(request):
     return render(request, "home/menu.html", {"menu_items": menu_items})
     
 def menu_page(request):
-    items = MenuItem.objects.all()  # sare menu items fetch kar lega
+    items = MenuItem.objects.all()
     return render(request, "home/menu.html", {"items": items})
 
 def home(request):
@@ -77,7 +77,7 @@ def contact_view(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Thanks — we received your details.")
-            return redirect('contact')   # redirect back to contact page
+            return redirect('contact')
     else:
         form = ContactForm()
     return render(request, "home/contact.html", {"form": form})
