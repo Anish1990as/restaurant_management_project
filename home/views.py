@@ -81,3 +81,10 @@ def contact_view(request):
     else:
         form = ContactForm()
     return render(request, "home/contact.html", {"form": form})
+
+
+def homepage(request):
+    breadcrumbs = [
+        ("Home", "/"),
+    ]
+    return render(request, "home/index.html", {"breadcrumbs": breadcrumbs})
