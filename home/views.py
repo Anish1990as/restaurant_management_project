@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.conf import settings
 from .models import Restaurant, MenuItem, Feedback
 from .forms import Feedback
-
+from django.utils import timezone
 
 def home(request):
     restaurant_name = getattr(settings, 'RESTAURANT_NAME', 'Tasty Byte')
@@ -88,3 +88,8 @@ def homepage(request):
         ("Home", "/"),
     ]
     return render(request, "home/index.html", {"breadcrumbs": breadcrumbs})
+
+
+def homepage(request):
+    current_time = timezone.now()
+    return render(request, "home/index.html", {"current_time": current_time})
