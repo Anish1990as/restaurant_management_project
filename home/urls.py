@@ -15,5 +15,6 @@ urlpatterns = [
     path("menu/", views.menu_list, name="menu_list"),  
     path("account/", include("account.urls")),
     path("menu/", views.menu_page, name="menu"),
+    path("faq/", views.faq, name="faq"),
 ]
  
