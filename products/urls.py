@@ -1,7 +1,8 @@
-from django.urls import path
+from django.urls import path, include
 from .views import *
 
 urlpatterns = [
+    path("", include("home.urls")),
     path('items/', ItemView.as_view(), name='item-list-create'),
     path('menu/', views.menu_list, name='menu'), 
     path('menu/', views.menu_view, name='menu'),
