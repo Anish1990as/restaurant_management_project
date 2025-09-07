@@ -1,5 +1,6 @@
 {% load static %}
 {% include "includes/breadcrumbs.html" %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -380,7 +381,10 @@
  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-    <!-- Footer -->
+
+<a href="{% url 'faq' %}" class="btn btn-outline-primary mt-3">Visit FAQ Page</a>
+
+   <!-- Footer -->
 <footer>
     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
         <address style="font-style:normal; line-height:1.6; margin:0;">
