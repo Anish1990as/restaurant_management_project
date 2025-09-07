@@ -57,3 +57,11 @@ def menu_list(request):
 def menu_view(request):
     items = MenuItem.objects.all()
     return render(request, "products/menu.html", {"items": menu_items})
+
+
+def product_list(request):
+    breadcrumbs = [
+        ("Home", "/"),
+        ("Products", "/products/"),
+    ]
+    return render(request, "products/list.html", {"breadcrumbs": breadcrumbs})
