@@ -93,3 +93,6 @@ def homepage(request):
 def homepage(request):
     current_time = timezone.now()
     return render(request, "home/index.html", {"current_time": current_time})
+
+def privacy_policy(request):
+    return render(request, 'home/privacy_policy.html')
