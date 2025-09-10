@@ -16,5 +16,6 @@ urlpatterns = [
     path("account/", include("account.urls")),
     path("menu/", views.menu_page, name="menu"),
     path("faq/", views.faq, name="faq"),
+     path('privacy-policy/', views.privacy_policy, name='privacy_policy')
 ]
  
