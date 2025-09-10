@@ -96,3 +96,26 @@ def homepage(request):
 
 def privacy_policy(request):
     return render(request, 'home/privacy_policy.html')
+
+from django.shortcuts import render
+
+def homepage(request):
+    breadcrumbs = [
+        {'title': 'Home', 'url': '/'},
+    ]
+    return render(request, 'home/homepage.html', {'breadcrumbs': breadcrumbs})
+
+def menu_page(request):
+    breadcrumbs = [
+        {'title': 'Home', 'url': '/'},
+        {'title': 'Menu', 'url': '/menu/'},
+    ]
+    return render(request, 'home/menu.html', {'breadcrumbs': breadcrumbs})
+
+def order_confirmation(request):
+    breadcrumbs = [
+        {'title': 'Home', 'url': '/'},
+        {'title': 'Orders', 'url': '/orders/'},
+        {'title': 'Confirmation', 'url': '#'},
+    ]
+    return render(request, 'home/order_confirmation.html', {'breadcrumbs': breadcrumb
