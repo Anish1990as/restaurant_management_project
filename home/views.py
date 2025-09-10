@@ -119,3 +119,6 @@ def order_confirmation(request):
         {'title': 'Confirmation', 'url': '#'},
     ]
     return render(request, 'home/order_confirmation.html', {'breadcrumbs': breadcrumb
+
+def place_order(request):
+    return render(request, 'home/place_order.html')
