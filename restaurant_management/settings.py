@@ -83,6 +83,8 @@ RESTAURANT_NAME = "Tasty Byte"
 
 RESTAURANT_PHONE = "+91 7880821765"
 
+LOGIN_REDIRECT_URL = '/' 
+LOGOUT_REDIRECT_URL = '/'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
