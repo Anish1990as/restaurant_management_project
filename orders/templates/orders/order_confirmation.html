@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .confirmation-box {
+            border: 2px solid #4CAF50;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 10px;
+            background-color: #f9fff9;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-box">
+        <h1>✅ Order Confirmed!</h1>
+        <p>Thank you for your purchase.</p>
+        <p><strong>Your Order Number:</strong> {{ order_number }}</p>
+    </div>
+</body>
+</html>
