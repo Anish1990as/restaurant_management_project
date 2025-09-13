@@ -272,6 +272,40 @@
     <a href="{% url 'menu' %}" class="explore-menu-button">View Menu</a>
   </section>
 
+
+<meta charset="UTF-8">
+    <title>Restaurant - Today's Specials</title>
+    <link rel="stylesheet" href="{% static 'home/style.css' %}">
+</head>
+<body>
+
+<div class="hero-section" style="background: url('{{ banner.background_image.url }}') no-repeat center center/cover;">
+    <div class="overlay">
+        <h1>{{ banner.title|default:"Welcome to Our Restaurant" }}</h1>
+        <h2>Today's Specials</h2>
+    </div>
+</div>
+
+<div class="specials-container">
+    {% if specials %}
+        <div class="specials-grid">
+            {% for item in specials %}
+                <div class="special-card">
+                    {% if item.image %}
+                        <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                    {% endif %}
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.description }}</p>
+                    <span>${{ item.price }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-specials">No specials available today.</p>
+    {% endif %}
+</div>
+
+
   <!-- ABOUT -->
   <section class="about-section">
     <div class="about-text">
