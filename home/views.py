@@ -3,7 +3,7 @@ from django.conf import settings
 from .models import Restaurant, MenuItem, Feedback
 from .forms import Feedback
 from django.utils import timezone
-from products.models import TodaysSpecial
+from products.models import TodaysSpecial, HomepageBanner
 
 
 def home(request):
@@ -127,6 +127,6 @@ def place_order(request):
 
 
 def home(request):
-    specials = TodaysSpecial.objects.filter(created_at__exact=None)
     specials = TodaysSpecial.objects.all()
-    return render(request, "home/index.html", {"specials": specials})
+    banner = HomepageBanner.objects.first()  # ek banner hi use karenge
+    return render(request, "home/home.html", {"specials": specials, "banner": banner})
