@@ -3,6 +3,8 @@ from django.conf import settings
 from .models import Restaurant, MenuItem, Feedback
 from .forms import Feedback
 from django.utils import timezone
+from products.models import TodaysSpecial
+
 
 def home(request):
     restaurant_name = getattr(settings, 'RESTAURANT_NAME', 'Tasty Byte')
@@ -122,3 +124,9 @@ def order_confirmation(request):
 
 def place_order(request):
     return render(request, 'home/place_order.html')
+
+
+def home(request):
+    specials = TodaysSpecial.objects.filter(created_at__exact=None)
+    specials = TodaysSpecial.objects.all()
+    return render(request, "home/index.html", {"specials": specials})
