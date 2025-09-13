@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import *
-from .models import TodaysSpecial
+from .models import TodaysSpecial, HomepageBanner
 
 
 class ItemAdmin(admin.ModelAdmin):
@@ -17,3 +17,8 @@ class MenuItemAdmin(admin.ModelAdmin):
 class TodaysSpecialAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'created_at')
     search_fields = ('name',)
+
+
+@admin.register(HomepageBanner)
+class HomepageBannerAdmin(admin.ModelAdmin):
+    list_display = ("title",)
