@@ -5,7 +5,7 @@ from .models import ContactSubmission
 class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
-        fields = ['name', 'email', 'message']
+        fields = ['name', 'email', 'message','feedback_text']
 
 class ContactForm(forms.ModelForm):
     class Meta:
@@ -15,3 +15,6 @@ class ContactForm(forms.ModelForm):
             "name": forms.TextInput(attrs={"placeholder": "Your name", "class": "form-control"}),
             "email": forms.EmailInput(attrs={"placeholder": "you@example.com", "class": "form-control"}),
         }
+
+
+ 
