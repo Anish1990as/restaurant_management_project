@@ -4,6 +4,7 @@ from .models import Restaurant, MenuItem, Feedback
 from .forms import Feedback
 from django.utils import timezone
 from products.models import TodaysSpecial, HomepageBanner
+from .models import About
 
 
 def home(request):
@@ -130,3 +131,7 @@ def home(request):
     specials = TodaysSpecial.objects.all()
     banner = HomepageBanner.objects.first()  # ek banner hi use karenge
     return render(request, "home/home.html", {"specials": specials, "banner": banner})
+
+def about_view(request):
+    about = About.objects.first()
+    return render(request, 'home/about.html', {'about': about})
