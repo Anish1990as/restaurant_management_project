@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Restaurant, MenuItem, Feedback, Order    
 from .models import ContactSubmission
- 
+from .models import About
  
 @admin.register(Restaurant)
 class RestaurantAdmin(admin.ModelAdmin):
@@ -25,3 +25,8 @@ class FeedbackAdmin(admin.ModelAdmin):
 class ContactSubmissionAdmin(admin.ModelAdmin):
     list_display = ("name", "email", "created_at")
     search_fields = ("name", "email")
+
+
+@admin.register(About)
+class AboutAdmin(admin.ModelAdmin):
+    list_display = ('title',)
