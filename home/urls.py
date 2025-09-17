@@ -11,6 +11,7 @@ urlpatterns = [
     path('contact/', views.contact_view, name='contact'),
     path('reservations/', views.reservations, name='reservations'),
     path("feedback/", views.feedback, name="feedback"),
+    path('feedback/success/', views.feedback_success, name='feedback_success'),
     path("feedback_thanks/", views.feedback_thanks, name="feedback_thanks"),
     path('search/', views.search_menu, name='search_menu'),
     path("menu/", views.menu_list, name="menu_list"),  
