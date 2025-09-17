@@ -70,6 +70,7 @@
     <h2>We Value Your Feedback</h2>
     <form method="POST">
       {% csrf_token %}
+      {{ form.as_p }}
       <textarea name="comment" rows="6" placeholder="Write your feedback here..." required></textarea>
       <button type="submit">Submit Feedback</button>
     </form>
