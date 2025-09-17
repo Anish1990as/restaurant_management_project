@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
 from .models import Item
 from .serializers import ItemSerializer
+from products.models import MenuItem
 
 
 class ItemAPIView(APIView):
@@ -65,3 +66,47 @@ def product_list(request):
         ("Products", "/products/"),
     ]
     return render(request, "products/list.html", {"breadcrumbs": breadcrumbs})
+
+
+def add_to_cart(request, item_id):
+    cart = request.session.get('cart', {})
+
+    
+    if str(item_id) in cart:
+        cart[str(item_id)] += 1
+    else:
+        cart[str(item_id)] = 1
+
+    request.session['cart'] = cart
+    return redirect('view_cart')
+
+
+ 
+def view_cart(request):
+    cart = request.session.get('cart', {})
+    items = []
+    total_price = 0
+
+    for item_id, quantity in cart.items():
+        item = get_object_or_404(MenuItem, id=item_id)
+        items.append({
+            'item': item,
+            'quantity': quantity,
+            'subtotal': item.price * quantity
+        })
+        total_price += item.price * quantity
+
+    context = {
+        'cart_items': items,
+        'total_price': total_price
+    }
+    return render(request, 'cart/cart.html', context)
+
+
+ 
+def remove_from_cart(request, item_id):
+    cart = request.session.get('cart', {})
+    if str(item_id) in cart:
+        del cart[str(item_id)]
+        request.session['cart'] = cart
+    return redirect('view_cart')
