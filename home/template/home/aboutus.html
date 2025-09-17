@@ -125,6 +125,9 @@
             <p>At Flavor Haven, we believe dining is more than just eating—it's an experience. Our chefs carefully craft each dish using fresh, locally sourced ingredients, ensuring every bite bursts with flavor.</p>
             <p>Whether you're here for a romantic dinner, a family gathering, or a quick lunch, we strive to make every moment special. Our warm ambiance and exceptional service are designed to make you feel right at home.</p>
         </div>
+         {% if about.image %}
+        <img src="{{ about.image.url }}" alt="Restaurant" style="max-width:400px;">
+    {% endif %}
         <div class="about-image">
             <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de" alt="Delicious food served at Flavor Haven">
         </div>
