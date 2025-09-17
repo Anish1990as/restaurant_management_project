@@ -5,6 +5,7 @@ from .forms import Feedback
 from django.utils import timezone
 from products.models import TodaysSpecial, HomepageBanner
 from .models import About
+from .forms import FeedbackForm
 
 
 def home(request):
@@ -135,3 +136,17 @@ def home(request):
 def about_view(request):
     about = About.objects.first()
     return render(request, 'home/about.html', {'about': about})
+
+def feedback_view(request):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('feedback_success')
+    else:
+        form = FeedbackForm()
+    return render(request, 'home/feedback.html', {'form': form})
+
+
+def feedback_success(request):
+    return render(request, 'home/feedback_success.html')
