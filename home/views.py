@@ -6,7 +6,9 @@ from django.utils import timezone
 from products.models import TodaysSpecial, HomepageBanner
 from .models import About
 from .forms import FeedbackForm
-
+from rest_framework.generics import ListAPIView
+from products.models import MenuCategory
+from .serializers import MenuCategorySerializer
 
 def home(request):
     restaurant_name = getattr(settings, 'RESTAURANT_NAME', 'Tasty Byte')
@@ -150,3 +152,7 @@ def feedback_view(request):
 
 def feedback_success(request):
     return render(request, 'home/feedback_success.html')
+
+class MenuCategoryListView(ListAPIView):
+    queryset = MenuCategory.objects.all()
+    serializer_class = MenuCategorySerializer
