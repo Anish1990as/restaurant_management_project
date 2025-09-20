@@ -47,3 +47,15 @@ class OrderStatus(models.Model):
 
     def __str__(self):
         return self.name
+        
+        
+class Order(models.Model):
+    customer_name = models.CharField(max_length=100)   # example field
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    # New status field
+    status = models.ForeignKey(OrderStatus, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return f"Order {self.id} - {self.customer_name} ({self.status})"
