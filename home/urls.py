@@ -1,9 +1,15 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from . import views   
 from .views import contact_view
 from django.contrib.auth import views as auth_views
 from .views import MenuCategoryListView
+from rest_framework.routers import DefaultRouter
+from .views import MenuItemViewSet
+
+
+router = DefaultRouter()
+router.register(r"menu-items", MenuItemViewSet, basename="menuitem")
 
 
 urlpatterns = [
