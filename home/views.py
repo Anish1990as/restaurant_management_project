@@ -9,7 +9,7 @@ from .forms import FeedbackForm
 from rest_framework.generics import ListAPIView
 from products.models import MenuCategory
 from .serializers import MenuCategorySerializer
-from rest_framework import viewsets, filters
+from rest_framework import viewsets, filters, permissions
 from .serializers import MenuItemSerializer
 from rest_framework.pagination import PageNumberPagination
 
@@ -169,12 +169,16 @@ class MenuItemPagination(PageNumberPagination):
 
 
 class MenuItemViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint to search menu items by name.
-    Example: /api/menu-items/?search=pizza
-    """
+   
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
     pagination_class = MenuItemPagination
     filter_backends = [filters.SearchFilter]
     search_fields = ["name"]
+
+class MenuItemViewSet(viewsets.ModelViewSet):
+ 
+    queryset = MenuItem.objects.all()
+    serializer_class = MenuItemSerializer
+
+    permission_classes = [permissions.IsAdminUser]
