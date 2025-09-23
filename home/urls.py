@@ -6,6 +6,7 @@ from django.contrib.auth import views as auth_views
 from .views import MenuCategoryListView
 from rest_framework.routers import DefaultRouter
 from .views import MenuItemViewSet
+from .views import MenuItemsByCategoryView
 
 
 router = DefaultRouter()
@@ -30,6 +31,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='home/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
     path('place-order/', views.place_order, name='place_order'),
-     path('menu-categories/', MenuCategoryListView.as_view(), name='menu-categories'),
+    path('menu-categories/', MenuCategoryListView.as_view(), name='menu-categories'),
+    path("menu-items/by-category/", MenuItemsByCategoryView.as_view(), name="menu-items-by-category"),
 ]
  
