@@ -32,6 +32,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
     path('place-order/', views.place_order, name='place_order'),
     path('menu-categories/', MenuCategoryListView.as_view(), name='menu-categories'),
-    path("menu-items/by-category/", MenuItemsByCategoryView.as_view(), name="menu-items-by-category"),
+    path("menu-items/by-category/", MenuItemsByCategoryView.as_view())
 ]
- 
