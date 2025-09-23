@@ -9,6 +9,10 @@ from .forms import FeedbackForm
 from rest_framework.generics import ListAPIView
 from products.models import MenuCategory
 from .serializers import MenuCategorySerializer
+from rest_framework import viewsets, filters
+from .serializers import MenuItemSerializer
+from rest_framework.pagination import PageNumberPagination
+
 
 def home(request):
     restaurant_name = getattr(settings, 'RESTAURANT_NAME', 'Tasty Byte')
@@ -156,3 +160,21 @@ def feedback_success(request):
 class MenuCategoryListView(ListAPIView):
     queryset = MenuCategory.objects.all()
     serializer_class = MenuCategorySerializer
+
+
+class MenuItemPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = "page_size"
+    max_page_size = 100
+
+
+class MenuItemViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint to search menu items by name.
+    Example: /api/menu-items/?search=pizza
+    """
+    queryset = MenuItem.objects.all()
+    serializer_class = MenuItemSerializer
+    pagination_class = MenuItemPagination
+    filter_backends = [filters.SearchFilter]
+    search_fields = ["name"]
