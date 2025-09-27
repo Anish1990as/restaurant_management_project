@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from products.models import Menu
 from products.models import Product
+from django.conf import settings
 
 class Order(models.Model):
     STATUS_CHOICES = [
@@ -16,6 +17,10 @@ class Order(models.Model):
     total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="pending")
     created_at = models.DateTimeField(auto_now_add=True)
+
+    # Managers
+    objects = models.Manager()        # Default manager
+    active = ActiveOrderManager()     # Custom manager
 
     def __str__(self):
         return f"Order #{self.id} by {self.customer.username}"
@@ -59,3 +64,8 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order {self.id} - {self.customer_name} ({self.status})"
+
+# Custom Manager
+class ActiveOrderManager(models.Manager):
+    def get_active_orders(self):
+        return self.filter(status__in=['pending', 'processing'])
