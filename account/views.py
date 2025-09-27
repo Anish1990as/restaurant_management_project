@@ -4,6 +4,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
+from rest_framework import generics, permissions
+from .models import CustomUser
+from .serializers import UserProfileSerializer
+
 
 @login_required
 def profile_view(request):
@@ -31,3 +35,12 @@ def register_user(request):
 
     # user creation logic yaha aayega
     return JsonResponse({"success": "User registered"})
+
+
+class UserProfileUpdateView(generics.UpdateAPIView):
+    serializer_class = UserProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        # Ensure only logged-in user can update their profile
+        return self.request.user
