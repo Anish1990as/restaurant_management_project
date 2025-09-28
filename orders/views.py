@@ -6,6 +6,8 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Order
 from .serializers import OrderSerializer
 from utils.email_utils import send_order_confirmation_email
+from rest_framework.generics import RetrieveAPIView
+
 
 def order_confirmation(request):
     # Generate a sample order number (you can replace this with actual order id from DB)
@@ -41,3 +43,10 @@ def create_order(request):
         "order_id": order.id,
         "email_status": email_response
     })
+
+
+class OrderDetailView(RetrieveAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
+    lookup_field = "id"    
