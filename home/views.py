@@ -7,6 +7,7 @@ from rest_framework import viewsets, filters, permissions, status
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from utils.email_utils import send_email
 
 from .models import (
     Restaurant,
@@ -158,3 +159,23 @@ class MenuItemsByCategoryView(APIView):
         items = MenuItem.objects.filter(category__name__iexact=category_name)
         serializer = MenuItemSerializer(items, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+def contact_view(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            submission = form.save()
+
+            # Call utility function
+            send_email(
+                recipient_email=submission.email,
+                subject="Thanks for contacting us!",
+                message_body=f"Hi {submission.name},\n\nWe received your message:\n\n{submission.message}\n\nOur team will reply soon.\n\nBest,\nTasty Byte",
+            )
+
+            messages.success(request, "Thanks — we received your details.")
+            return redirect("contact")
+    else:
+        form = ContactForm()
+    return render(request, "home/contact.html", {"form": form})
