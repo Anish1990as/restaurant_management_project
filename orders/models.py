@@ -5,6 +5,8 @@ from products.models import Product
 from django.conf import settings
 from decimal import Decimal
 from home.models import MenuItem
+from account.models import CustomUser
+from .utils import generate_unique_order_id
 
 class Order(models.Model):
     STATUS_CHOICES = [
@@ -86,3 +88,23 @@ class Order(models.Model):
 class ActiveOrderManager(models.Manager):
     def get_active_orders(self):
         return self.filter(status__in=['pending', 'processing'])
+
+
+class Order(models.Model):
+    customer = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    order_id = models.CharField(max_length=12, unique=True, editable=False)
+
+    def save(self, *args, **kwargs):
+        if not self.order_id:  # only generate on first creation
+            self.order_id = generate_unique_order_id()
+        super().save(*args, **kwargs)
+
+    def calculate_total(self):
+        total = Decimal('0.00')
+        for item in self.items.all():  # related_name="items"
+            total += item.price * item.quantity
+        return total
+
+    def __str__(self):
+        return f"Order {self.order_id} - {self.customer}"
