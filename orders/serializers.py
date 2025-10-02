@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Order, OrderItem
 from products.models import Product
+from .models import Order
 
 class OrderItemSerializer(serializers.ModelSerializer):
     item_name = serializers.CharField(source="item.name", read_only=True)
@@ -32,4 +33,11 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ['id', 'username', 'order_date', 'status', 'total_price', 'items']
+        fields = ['id', 'username', 'order_date', '
+        
+        
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ["id", "order_id", "customer", "status", "created_at"]
+        read_only_fields = ["id", "order_id", "customer", "created_at"]
