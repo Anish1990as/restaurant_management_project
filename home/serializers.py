@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from products.models import MenuCategory    
 from .models import MenuItem
+from .models import ContactFormSubmission
 
 class MenuCategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,3 +18,9 @@ class MenuItemSerializer(serializers.ModelSerializer):
         if value <= 0:
             raise serializers.ValidationError("Price must be a positive number.")
         return value
+
+class ContactFormSubmissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactFormSubmission
+        fields = ['id', 'name', 'email', 'message', 'created_at']
+        read_only_fields = ['id', 'created_at']
