@@ -33,4 +33,6 @@ urlpatterns = [
     path('place-order/', views.place_order, name='place_order'),
     path("menu-categories-list/", MenuCategoryListView.as_view(), name="menu-categories
     path("menu-items/by-category/", MenuItemsByCategoryView.as_view(), name="menu-items-by-category"),
+    path("contact/submit/", ContactFormSubmissionView.as_view(), name="contact-form-submit"),
+
 ]
