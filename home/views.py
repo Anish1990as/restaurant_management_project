@@ -8,6 +8,10 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from utils.email_utils import send_email
+from rest_framework import generics
+from .models import Table
+from .serializers import TableSerializer
+
 
 from .models import (
     Restaurant,
@@ -179,3 +183,8 @@ def contact_view(request):
     else:
         form = ContactForm()
     return render(request, "home/contact.html", {"form": form})
+
+
+class AvailableTablesAPIView(generics.ListAPIView):
+    queryset = Table.objects.filter(is_available=True)
+    serializer_class = TableSerializer
