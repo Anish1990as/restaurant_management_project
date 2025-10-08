@@ -36,5 +36,6 @@ urlpatterns = [
     path("menu-items/by-category/", MenuItemsByCategoryView.as_view(), name="menu-items-by-category"),
     path("contact/submit/", ContactFormSubmissionView.as_view(), name="contact-form-submit"),
     path('api/tables/available/', AvailableTablesAPIView.as_view(), name='available_tables_api'),
-    
+    path('api/tables/available/', AvailableTablesAPIView.as_view(), name='available_tables_api'),
+    path('api/tables/<int:pk>/', TableDetailAPIView.as_view(), name='table_detail_api'),
 ]
