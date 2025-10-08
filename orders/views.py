@@ -7,6 +7,9 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Order
 from .serializers import OrderSerializer
 from utils.email_utils import send_order_confirmation_email
+from django.utils import timezone
+from .models import Coupon
+from .serializers import CouponSerializer
 
  
 class CancelOrderView(generics.UpdateAPIView):
@@ -82,3 +85,36 @@ class OrderDetailView(generics.RetrieveAPIView):
     serializer_class = OrderSerializer
     permission_classes = [IsAuthenticated]
     lookup_field = "id"
+
+
+class CouponValidationView(APIView):
+    """
+    POST endpoint to validate a coupon code.
+    Request body: {"code": "SAVE10"}
+    """
+    def post(self, request):
+        code = request.data.get('code')
+
+        if not code:
+            return Response({"error": "Coupon code is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            coupon = Coupon.objects.get(code__iexact=code)
+        except Coupon.DoesNotExist:
+            return Response({"error": "Invalid coupon code."}, status=status.HTTP_404_NOT_FOUND)
+
+        today = timezone.now().date()
+
+        # Validate coupon status and date
+        if not coupon.is_active:
+            return Response({"error": "This coupon is not active."}, status=status.HTTP_400_BAD_REQUEST)
+
+        if not (coupon.valid_from <= today <= coupon.valid_until):
+            return Response({"error": "This coupon is expired or not yet valid."}, status=status.HTTP_400_BAD_REQUEST)
+
+        # If valid, return discount percentage
+        return Response({
+            "message": "Coupon is valid.",
+            "code": coupon.code,
+            "discount_percentage": float(coupon.discount_percentage)
+        }, status=status.HTTP_200_OK)
