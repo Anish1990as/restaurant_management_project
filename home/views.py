@@ -188,3 +188,9 @@ def contact_view(request):
 class AvailableTablesAPIView(generics.ListAPIView):
     queryset = Table.objects.filter(is_available=True)
     serializer_class = TableSerializer
+
+# ✅ New view for single table details
+class TableDetailAPIView(generics.RetrieveAPIView):
+    queryset = Table.objects.all()
+    serializer_class = TableSerializer
+    lookup_field = 'pk' 
