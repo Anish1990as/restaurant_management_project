@@ -7,6 +7,7 @@ from .views import MenuCategoryListView
 from rest_framework.routers import DefaultRouter
 from .views import MenuItemViewSet
 from .views import MenuItemsByCategoryView
+from .views import AvailableTablesAPIView
 
 
 router = DefaultRouter()
@@ -34,5 +35,5 @@ urlpatterns = [
     path("menu-categories-list/", MenuCategoryListView.as_view(), name="menu-categories
     path("menu-items/by-category/", MenuItemsByCategoryView.as_view(), name="menu-items-by-category"),
     path("contact/submit/", ContactFormSubmissionView.as_view(), name="contact-form-submit"),
-
+    path('api/tables/available/', AvailableTablesAPIView.as_view(), name='available_tables_api'),
 ]
