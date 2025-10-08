@@ -93,3 +93,12 @@ class ContactFormSubmission(models.Model):
 
     def __str__(self):
         return f"{self.name} <{self.email}>"
+
+
+class Table(models.Model):
+    table_number = models.CharField(max_length=10)
+    capacity = models.IntegerField()
+    is_available = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"Table {self.table_number} (Capacity: {self.capacity})"
