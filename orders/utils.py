@@ -2,6 +2,8 @@ import string
 import secrets
 from .models import Coupon
 from .models import Order
+from django.db.models import Sum
+
 
 def generate_coupon_code(length=10):
     """Generate a unique alphanumeric coupon code."""
@@ -25,3 +27,16 @@ def generate_unique_order_id(length=8):
         order_id = ''.join(secrets.choice(characters) for _ in range(length))
         if not Order.objects.filter(order_id=order_id).exists():
             return order_id
+
+    
+def get_daily_sales_total(date):
+    """
+    Calculate the total sales for a specific date.
+    Args:
+        date (datetime.date): The date for which to calculate total sales.
+    Returns:
+        Decimal: Total sales amount for the given date, or 0 if no orders exist.
+    """
+    orders = Order.objects.filter(created_at__date=date)
+    total = orders.aggregate(total_sum=Sum('total_price'))['total_sum']
+    return total or 0
