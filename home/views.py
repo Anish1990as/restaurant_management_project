@@ -11,6 +11,7 @@ from utils.email_utils import send_email
 from rest_framework import generics
 from .models import Table
 from .serializers import TableSerializer
+from .utils import is_restaurant_open
 
 
 from .models import (
@@ -194,3 +195,9 @@ class TableDetailAPIView(generics.RetrieveAPIView):
     queryset = Table.objects.all()
     serializer_class = TableSerializer
     lookup_field = 'pk' 
+
+
+class RestaurantStatusAPIView(APIView):
+    def get(self, request):
+        status = "open" if is_restaurant_open() else "closed"
+        return Response({"restaurant_status": status})
