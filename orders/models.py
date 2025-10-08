@@ -4,6 +4,7 @@ from account.models import CustomUser
 from home.models import MenuItem
 from products.models import Product
 from .utils import generate_unique_order_id
+from django.utils import timezone
 
  
 class ActiveOrderManager(models.Manager):
@@ -78,3 +79,20 @@ class CartItem(models.Model):
 
     def __str__(self):
         return f"{self.product.name} ({self.quantity})"
+        
+
+class Coupon(models.Model):
+    code = models.CharField(max_length=50, unique=True)
+    discount_percentage = models.DecimalField(max_digits=5, decimal_places=2)  # e.g., 10.00 = 10%
+    is_active = models.BooleanField(default=True)
+    valid_from = models.DateField()
+    valid_until = models.DateField()
+
+    def __str__(self):
+        return f"{self.code} ({self.discount_percentage}% off)"
+
+    @property
+    def is_valid(self):
+        """Check if the coupon is active and within date range."""
+        today = timezone.now().date()
+        return self.is_active and self.valid_from <= today <= self.valid_until
