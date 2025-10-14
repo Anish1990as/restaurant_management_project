@@ -5,7 +5,9 @@ from home.models import MenuItem
 from products.models import Product
 from .utils import generate_unique_order_id
 from django.utils import timezone
-from decimal import Decimal, ROUND_HALF_UP
+from decimal import Decimal, ROUND_HALF_U
+from django.contrib.auth import get_user_modelP
+
  
 class ActiveOrderManager(models.Manager):
     def get_active_orders(self):
@@ -215,3 +217,59 @@ class OrderItem(models.Model):
     @property
     def price(self):
         return self.unit_price
+
+
+ChatGPT said:
+Here’s a clean, ready-to-use implementation of a custom model manager for the Order model — exactly matching your task instructions 👇
+
+✅ Step 1: Update orders/models.py
+# orders/models.py
+from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+ 
+class OrderManager(models.Manager):
+    """Custom manager for Order model."""
+
+    def with_status(self, status):
+        """Return all orders with the specified status (case-insensitive)."""
+        return self.filter(status__iexact=status)
+
+    def pending(self):
+        """Return all orders with 'Pending' status."""
+        return self.filter(status='Pending')
+
+    def processing(self):
+        """Return all orders with 'Processing' status."""
+        return self.filter(status='Processing')
+
+    def completed(self):
+        """Return all orders with 'Completed' status."""
+        return self.filter(status='Completed')
+
+    def cancelled(self):
+        """Return all orders with 'Cancelled' status."""
+        return self.filter(status='Cancelled')
+
+
+ 
+class Order(models.Model):
+    STATUS_CHOICES = [
+        ('Pending', 'Pending'),
+        ('Processing', 'Processing'),
+        ('Completed', 'Completed'),
+        ('Cancelled', 'Cancelled'),
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Pending')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    # Attach custom manager
+    objects = OrderManager()
+
+    def __str__(self):
+        return f"Order #{self.id} - {self.status}"
