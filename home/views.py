@@ -2,38 +2,43 @@ from django.shortcuts import render, redirect
 from django.conf import settings
 from django.utils import timezone
 from django.contrib import messages
-from rest_framework.generics import ListAPIView, CreateAPIView
-from rest_framework import viewsets, filters, permissions, status
-from rest_framework.pagination import PageNumberPagination
+
+from rest_framework import viewsets, generics, filters, permissions, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from utils.email_utils import send_email
-from rest_framework import generics
-from .models import Table
-from .serializers import TableSerializer
-from .utils import is_restaurant_open
-from rest_framework import generics
-from .models import MenuItem
-from .serializers import MenuItemSerializer
+from rest_framework.generics import ListAPIView, CreateAPIView
+from rest_framework.pagination import PageNumberPagination
 
+from utils.email_utils import send_email
+from .utils import is_restaurant_open
+ 
 
 from .models import (
-    Restaurant,
+    Table,
     MenuItem,
+    Restaurant,
     Feedback,
     About,
     ContactFormSubmission,
     RestaurantInfo,
 )
+
+
 from .forms import FeedbackForm, ContactForm
-from products.models import TodaysSpecial, HomepageBanner, MenuCategory
+ 
+
 from .serializers import (
+    TableSerializer,
     MenuCategorySerializer,
     MenuItemSerializer,
     ContactFormSubmissionSerializer,
 )
 
+ 
+from products.models import TodaysSpecial, HomepageBanner, MenuCategory
 
+
+ 
 class ContactFormSubmissionView(CreateAPIView):
     queryset = ContactFormSubmission.objects.all()
     serializer_class = ContactFormSubmissionSerializer
@@ -48,7 +53,7 @@ class ContactFormSubmissionView(CreateAPIView):
             )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
- 
+
 
 def home(request):
     specials = TodaysSpecial.objects.all()
@@ -70,7 +75,18 @@ def contact_view(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
-            form.save()
+            submission = form.save()
+
+             
+                recipient_email=submission.email,
+                subject="Thanks for contacting us!",
+                message_body=(
+                    f"Hi {submission.name},\n\n"
+                    f"We received your message:\n\n{submission.message}\n\n"
+                    "Our team will reply soon.\n\nBest,\nTasty Byte"
+                ),
+            )
+
             messages.success(request, "Thanks — we received your details.")
             return redirect("contact")
     else:
@@ -99,9 +115,7 @@ def feedback_success(request):
 
 def search_menu(request):
     query = request.GET.get("q", "")
-    results = []
-    if query:
-        results = MenuItem.objects.filter(name__icontains=query)
+    results = MenuItem.objects.filter(name__icontains=query) if query else []
     return render(request, "search_results.html", {"query": query, "results": results})
 
 
@@ -146,12 +160,9 @@ class MenuItemPagination(PageNumberPagination):
 class MenuItemViewSet(viewsets.ModelViewSet):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
- 
     pagination_class = MenuItemPagination
     filter_backends = [filters.SearchFilter]
     search_fields = ["name"]
-
-    
     permission_classes = [permissions.IsAdminUser]
 
 
@@ -169,43 +180,26 @@ class MenuItemsByCategoryView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-def contact_view(request):
-    if request.method == "POST":
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            submission = form.save()
-
-            # Call utility function
-            send_email(
-                recipient_email=submission.email,
-                subject="Thanks for contacting us!",
-                message_body=f"Hi {submission.name},\n\nWe received your message:\n\n{submission.message}\n\nOur team will reply soon.\n\nBest,\nTasty Byte",
-            )
-
-            messages.success(request, "Thanks — we received your details.")
-            return redirect("contact")
-    else:
-        form = ContactForm()
-    return render(request, "home/contact.html", {"form": form})
-
 
 class AvailableTablesAPIView(generics.ListAPIView):
     queryset = Table.objects.filter(is_available=True)
     serializer_class = TableSerializer
 
-# ✅ New view for single table details
+
 class TableDetailAPIView(generics.RetrieveAPIView):
     queryset = Table.objects.all()
     serializer_class = TableSerializer
-    lookup_field = 'pk' 
+    lookup_field = 'pk'
 
 
+ 
 class RestaurantStatusAPIView(APIView):
     def get(self, request):
-        status = "open" if is_restaurant_open() else "closed"
-        return Response({"restaurant_status": status})
+        status_value = "open" if is_restaurant_open() else "closed"
+        return Response({"restaurant_status": status_value})
 
 
+ 
 class DailySpecialsAPIView(generics.ListAPIView):
     """
     API endpoint to retrieve all menu items marked as daily specials.
