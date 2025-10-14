@@ -12,6 +12,9 @@ from rest_framework import generics
 from .models import Table
 from .serializers import TableSerializer
 from .utils import is_restaurant_open
+from rest_framework import generics
+from .models import MenuItem
+from .serializers import MenuItemSerializer
 
 
 from .models import (
@@ -201,3 +204,13 @@ class RestaurantStatusAPIView(APIView):
     def get(self, request):
         status = "open" if is_restaurant_open() else "closed"
         return Response({"restaurant_status": status})
+
+
+class DailySpecialsAPIView(generics.ListAPIView):
+    """
+    API endpoint to retrieve all menu items marked as daily specials.
+    """
+    serializer_class = MenuItemSerializer
+
+    def get_queryset(self):
+        return MenuItem.objects.filter(is_daily_special=True, is_available=True)
