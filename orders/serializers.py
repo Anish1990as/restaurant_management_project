@@ -48,3 +48,15 @@ class CouponSerializer(serializers.ModelSerializer):
     class Meta:
         model = Coupon
         fields = ['code', 'discount_percentage', 'is_active', 'valid_from', 'valid_until']
+
+
+class OrderStatusUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ['status']
+
+    def validate_status(self, value):
+        allowed_statuses = ['pending', 'processing', 'completed', 'cancelled']
+        if value not in allowed_statuses:
+            raise serializers.ValidationError(f"Invalid status. Must be one of: {', '.join(allowed_statuses)}.")
+        return value
