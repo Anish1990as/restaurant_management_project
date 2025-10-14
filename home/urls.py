@@ -8,7 +8,7 @@ from rest_framework.routers import DefaultRouter
 from .views import MenuItemViewSet
 from .views import MenuItemsByCategoryView
 from .views import AvailableTablesAPIView, TableDetailAPIView
-
+from .views import DailySpecialsAPIView
 
 router = DefaultRouter()
 router.register(r"menu-items", MenuItemViewSet, basename="menuitem")
@@ -39,4 +39,5 @@ urlpatterns = [
     path('api/tables/available/', AvailableTablesAPIView.as_view(), name='available_tables_api'),
     path('api/tables/<int:pk>/', TableDetailAPIView.as_view(), name='table_detail_api'),
     path('api/restaurant/status/', RestaurantStatusAPIView.as_view(), name='restaurant_status'),
+    path('api/daily-specials/', DailySpecialsAPIView.as_view(), name='daily_specials_api'),
 ]
