@@ -138,3 +138,88 @@ class UpdateOrderStatusAPIView(APIView):
                 "new_status": serializer.data['status']
             }, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+ChatGPT said:
+Perfect 👍 — let’s create your DRF API View for updating an order’s status (using a POST request this time).
+We’ll implement it cleanly in 5 steps, exactly as you described.
+
+✅ Step 1: Update Order Model
+In your orders/models.py, make sure your model includes a status field with valid choices:
+
+# orders/models.py
+from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+class Order(models.Model):
+    STATUS_CHOICES = [
+        ('Pending', 'Pending'),
+        ('Processing', 'Processing'),
+        ('Delivered', 'Delivered'),
+        ('Cancelled', 'Cancelled'),
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Pending')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Order #{self.id} - {self.status}"
+✅ Step 2: Create the API View
+Now open orders/views.py and add this:
+
+# orders/views.py
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Order
+
+class OrderStatusUpdateAPIView(APIView):
+    """
+    API endpoint to update the status of an existing order.
+    Accepts POST request with 'order_id' and 'status'.
+    """
+
+    def post(self, request):
+        order_id = request.data.get('order_id')
+        new_status = request.data.get('status')
+
+        # Validate input fields
+        if not order_id or not new_status:
+            return Response(
+                {"error": "Both 'order_id' and 'status' fields are required."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # Check if order exists
+        try:
+            order = Order.objects.get(id=order_id)
+        except Order.DoesNotExist:
+            return Response(
+                {"error": "Order not found."},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        # Validate status choice
+        allowed_statuses = [choice[0] for choice in Order.STATUS_CHOICES]
+        if new_status not in allowed_statuses:
+            return Response(
+                {"error": f"Invalid status. Must be one of: {', '.join(allowed_statuses)}."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # Update and save order status
+        order.status = new_status
+        order.save()
+
+        return Response(
+            {
+                "message": "Order status updated successfully.",
+                "order_id": order.id,
+                "new_status": order.status,
+            },
+            status=status.HTTP_200_OK
+        )
