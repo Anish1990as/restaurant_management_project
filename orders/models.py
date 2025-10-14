@@ -30,7 +30,7 @@ class Order(models.Model):
         ("cancelled", "Cancelled"),
     ]
 
-    customer = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="orders")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
     order_id = models.CharField(max_length=12, unique=True, editable=False)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="pending")
