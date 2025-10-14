@@ -3,7 +3,7 @@ import secrets
 from .models import Coupon
 from .models import Order
 from django.db.models import Sum
-
+from decimal import Decimal
 
 def generate_coupon_code(length=10):
     """Generate a unique alphanumeric coupon code."""
@@ -40,3 +40,31 @@ def get_daily_sales_total(date):
     orders = Order.objects.filter(created_at__date=date)
     total = orders.aggregate(total_sum=Sum('total_price'))['total_sum']
     return total or 0
+
+
+def calculate_discount(order, item=None, line_total=None):
+    """
+    Example discount calculator.
+    - If order has a coupon attribute and coupon.discount_percentage, apply percentage on line_total.
+    - Otherwise return Decimal('0.00').
+
+    This is intentionally simple — adjust to your business logic.
+    """
+    if line_total is None:
+        return Decimal('0.00')
+
+    # Example: if Order has attribute 'coupon' (FK to Coupon), apply its discount_percentage
+    coupon = getattr(order, 'coupon', None)
+    if coupon and getattr(coupon, 'is_active', False):
+        try:
+            pct = Decimal(getattr(coupon, 'discount_percentage', 0))
+            # if stored as 10 for 10%, convert to fraction if needed
+            if pct > 1:
+                pct = pct / Decimal('100')
+            discount_amount = (Decimal(line_total) * pct).quantize(Decimal('0.01'))
+            return discount_amount
+        except Exception:
+            return Decimal('0.00')
+
+    # No discount
+    return Decimal('0.00')
