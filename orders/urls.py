@@ -4,6 +4,8 @@ from .views import OrderHistoryView
 from .views import OrderDetailView
 from .views import CancelOrderView
 from .views import CouponValidationView
+from .views import OrderStatusUpdateAPIView
+
 
 app_name = "orders"
 
@@ -13,4 +15,5 @@ urlpatterns = [
     path('<int:id>/', OrderDetailView.as_view(), name='order-detail'),
     path("cancel/<int:pk>/", CancelOrderView.as_view(), name="cancel-order"),
     path('coupons/validate/', CouponValidationView.as_view(), name='coupon-validate'),
+    path('api/orders/update-status/', OrderStatusUpdateAPIView.as_view(), name='order_status_update'),
 ]
