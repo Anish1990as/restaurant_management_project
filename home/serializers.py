@@ -32,3 +32,9 @@ class TableSerializer(serializers.ModelSerializer):
     class Meta:
         model = Table
         fields = ['table_number', 'capacity', 'is_available']
+
+
+class MenuItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MenuItem
+        fields = ['id', 'name', 'description', 'price', 'is_daily_special']
