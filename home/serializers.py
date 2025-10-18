@@ -3,7 +3,7 @@ from products.models import MenuCategory
 from .models import MenuItem
 from .models import ContactFormSubmission
 from .models import Table
-
+from .models import MenuCategory
 
 class MenuCategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -38,3 +38,9 @@ class MenuItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = MenuItem
         fields = ['id', 'name', 'description', 'price', 'is_daily_special']
+
+
+class MenuCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MenuCategory
+        fields = ['id', 'name']
