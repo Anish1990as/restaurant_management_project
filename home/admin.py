@@ -3,8 +3,8 @@ from .models import Restaurant, MenuItem, Feedback, Order
 from .models import ContactSubmission
 from .models import About
 from .models import Feedback
- from .models import MenuCategory
-
+from .models import MenuCategory
+from .models import UserReview
  
 @admin.register(Restaurant)
 class RestaurantAdmin(admin.ModelAdmin):
@@ -44,3 +44,9 @@ class FeedbackAdmin(admin.ModelAdmin):
 class MenuCategoryAdmin(admin.ModelAdmin):
     list_display = ("id", "name")
     search_fields = ("name",)
+
+@admin.register(UserReview)
+class UserReviewAdmin(admin.ModelAdmin):
+    list_display = ('user', 'menu_item', 'rating', 'review_date')
+    list_filter = ('rating', 'review_date')
+    search_fields = ('user__username', 'menu_item__name', 'comment')
