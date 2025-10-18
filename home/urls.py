@@ -9,9 +9,13 @@ from .views import MenuItemViewSet
 from .views import MenuItemsByCategoryView
 from .views import AvailableTablesAPIView, TableDetailAPIView
 from .views import DailySpecialsAPIView
+from .views import MenuCategoryViewSet
 
 router = DefaultRouter()
 router.register(r"menu-items", MenuItemViewSet, basename="menuitem")
+
+router = DefaultRouter()
+router.register(r'menu-categories', MenuCategoryViewSet, basename='menu-category')
 
 
 urlpatterns = [
