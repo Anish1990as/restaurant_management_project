@@ -11,6 +11,8 @@ from rest_framework.pagination import PageNumberPagination
 
 from utils.email_utils import send_email
 from .utils import is_restaurant_open
+from .models import MenuCategory
+from .serializers import MenuCategorySerializer
  
 
 from .models import (
@@ -208,3 +210,8 @@ class DailySpecialsAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         return MenuItem.objects.filter(is_daily_special=True, is_available=True)
+
+
+class MenuCategoryViewSet(viewsets.ModelViewSet):
+    queryset = MenuCategory.objects.all().order_by('id')
+    serializer_class = MenuCategorySerializer
