@@ -44,4 +44,5 @@ urlpatterns = [
     path('api/tables/<int:pk>/', TableDetailAPIView.as_view(), name='table_detail_api'),
     path('api/restaurant/status/', RestaurantStatusAPIView.as_view(), name='restaurant_status'),
     path('api/daily-specials/', DailySpecialsAPIView.as_view(), name='daily_specials_api'),
+    path('api/home/', include('home.urls')),
 ]
