@@ -13,6 +13,11 @@ from utils.email_utils import send_email
 from .utils import is_restaurant_open
 from .models import MenuCategory
 from .serializers import MenuCategorySerializer
+
+from rest_framework import generics, permissions
+from .models import UserReview
+from .serializers import UserReviewSerializer
+
  
 
 from .models import (
@@ -215,3 +220,20 @@ class DailySpecialsAPIView(generics.ListAPIView):
 class MenuCategoryViewSet(viewsets.ModelViewSet):
     queryset = MenuCategory.objects.all().order_by('id')
     serializer_class = MenuCategorySerializer
+
+
+class UserReviewCreateView(generics.CreateAPIView):
+    serializer_class = UserReviewSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)  # automatically assign current user
+
+
+# Retrieve reviews for a specific menu item
+class MenuItemReviewListView(generics.ListAPIView):
+    serializer_class = UserReviewSerializer
+
+    def get_queryset(self):
+        menu_item_id = self.kwargs.get('menu_item_id')
+        return UserReview.objects.filter(menu_item_id=menu_item_id).order_by('-created_at')
