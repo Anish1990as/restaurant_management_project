@@ -10,6 +10,7 @@ from .views import MenuItemsByCategoryView
 from .views import AvailableTablesAPIView, TableDetailAPIView
 from .views import DailySpecialsAPIView
 from .views import MenuCategoryViewSet
+from .views import UserReviewCreateView, MenuItemReviewListView
 
 router = DefaultRouter()
 router.register(r"menu-items", MenuItemViewSet, basename="menuitem")
@@ -45,4 +46,6 @@ urlpatterns = [
     path('api/restaurant/status/', RestaurantStatusAPIView.as_view(), name='restaurant_status'),
     path('api/daily-specials/', DailySpecialsAPIView.as_view(), name='daily_specials_api'),
     path('api/home/', include('home.urls')),
+    path('reviews/create/', UserReviewCreateView.as_view(), name='create-review'),
+    path('menu/<int:menu_item_id>/reviews/', MenuItemReviewListView.as_view(), name='menu-item-reviews'),
 ]
