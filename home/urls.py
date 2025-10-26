@@ -19,7 +19,7 @@ router = DefaultRouter()
 router.register(r'menu-categories', MenuCategoryViewSet, basename='menu-category')
 
 
-urlpatterns = [
+urlpatterns = [ 
     path("admin/", admin.site.urls),    
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
